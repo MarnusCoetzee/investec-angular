@@ -32,7 +32,6 @@ export class AccountsApiComponent {
     private accountService: AccountService
   ) {
     this.accountFacade.getAllAccounts();
-    this.accounts$.subscribe((res) => console.log(res));
   }
 
   handleViewBalanceSelected(event: any): void {

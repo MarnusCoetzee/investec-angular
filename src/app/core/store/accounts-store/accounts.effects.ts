@@ -73,7 +73,6 @@ export class AccountEffects {
   addNewAccount$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AccountActions.addNewAccount),
-      tap((action) => console.log(action)),
       take(1),
       switchMap((action) =>
         this.accountService.addNewAccount(action.account).pipe(
