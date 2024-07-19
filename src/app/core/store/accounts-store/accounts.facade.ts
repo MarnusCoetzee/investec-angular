@@ -29,4 +29,12 @@ export class AccountFacade {
   addNewAccount() {
     this.store.dispatch(AccountActions.addNewAccount());
   }
+
+  createNewTransaction(accountId: string) {
+    this.store.dispatch(AccountActions.createTransaction({ accountId }));
+  }
+
+  deleteAccount(accountId: string) {
+    this.store.dispatch(AccountActions.deleteAccount({ accountId }));
+  }
 }

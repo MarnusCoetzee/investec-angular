@@ -5,6 +5,8 @@
         [accountData]="account"
         (viewBalanceSelected)="handleViewBalanceSelected($event)"
         (viewTransactionsSelected)="handleViewTransactionsSelected($event)"
+        (createNewTransaction)="handleCreateNewTransaction($event)"
+        (deleteAccount)="handleDeleteAccount($event)"
       ></app-account-tile>
     </div>
   </div>

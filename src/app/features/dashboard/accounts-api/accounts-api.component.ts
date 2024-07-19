@@ -30,6 +30,7 @@ export class AccountsApiComponent {
     private matDialog: MatDialog
   ) {
     this.accountFacade.getAllAccounts();
+    this.accounts$.subscribe((res) => console.log(res));
   }
 
   handleViewBalanceSelected(event: any): void {
@@ -47,5 +48,13 @@ export class AccountsApiComponent {
   handleAddAccount(): void {
     // this.matDialog.open(AddAccountComponent);
     // this.accountFacade.addNewAccount();
+  }
+
+  handleCreateNewTransaction(event: any): void {
+    this.accountFacade.createNewTransaction(event.accountId);
+  }
+
+  handleDeleteAccount(event: any): void {
+    this.accountFacade.deleteAccount(event.accountId);
   }
 }

@@ -28,4 +28,14 @@ export class AccountService {
     const url = `${this.baseUrl}/balance`;
     return this.http.post<any>(url, {});
   }
+
+  createNewTransaction(accountId: string): Observable<any> {
+    const url = `${this.baseUrl}/${accountId}/transactions`;
+    return this.http.post<any>(url, {});
+  }
+
+  deleteAccount(accountId: string): Observable<any> {
+    const url = `${this.baseUrl}/${accountId}`;
+    return this.http.delete<any>(url);
+  }
 }

@@ -72,5 +72,34 @@ export const accountsReducer = createReducer(
   on(AccountActions.addNewAccountFailure, (state) => ({
     ...state,
     loading: false,
+  })),
+  on(AccountActions.createTransaction, (state) => ({
+    ...state,
+    loading: true,
+  })),
+  on(AccountActions.createTransactionSuccess, (state) => ({
+    ...state,
+    loading: false,
+  })),
+  on(AccountActions.createTransactionFailure, (state, { error }) => ({
+    ...state,
+    error,
+    loading: false,
+  })),
+  on(AccountActions.deleteAccount, (state) => ({
+    ...state,
+    loading: true,
+  })),
+  on(AccountActions.deleteAccountSuccess, (state, { accountId }) => ({
+    ...state,
+    loading: false,
+    accounts: state.accounts.filter(
+      (account: any) => account.accountId !== accountId
+    ),
+  })),
+  on(AccountActions.deleteAccountFailure, (state, { error }) => ({
+    ...state,
+    error,
+    loading: false,
   }))
 );

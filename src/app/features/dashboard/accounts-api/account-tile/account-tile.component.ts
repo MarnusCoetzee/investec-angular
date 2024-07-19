@@ -15,6 +15,8 @@ export class AccountTileComponent {
   @Input() accountData: any | undefined;
   @Output() viewBalanceSelected = new EventEmitter();
   @Output() viewTransactionsSelected = new EventEmitter();
+  @Output() createNewTransaction = new EventEmitter();
+  @Output() deleteAccount = new EventEmitter();
 
   handleViewBalance(): void {
     this.viewBalanceSelected.emit(this.accountData);
@@ -22,5 +24,13 @@ export class AccountTileComponent {
 
   handleViewTransactions(): void {
     this.viewTransactionsSelected.emit(this.accountData);
+  }
+
+  handleNewTransaction(): void {
+    this.createNewTransaction.emit(this.accountData);
+  }
+
+  handleDeleteAccount(): void {
+    this.deleteAccount.emit(this.accountData);
   }
 }

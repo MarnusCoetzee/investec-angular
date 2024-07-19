@@ -51,3 +51,31 @@ export const addNewAccountFailure = createAction(
   '[Accounts] Add New Account',
   props<{ error: any }>()
 );
+
+export const createTransaction = createAction(
+  '[Transaction] Create Transaction',
+  props<{ accountId: any }>()
+);
+
+export const createTransactionSuccess = createAction(
+  '[Transaction] Create Transaction Success',
+  props<{ transaction: any }>()
+);
+
+export const createTransactionFailure = createAction(
+  '[Transaction] Create Transaction Failure',
+  props<{ error: any }>()
+);
+
+export const deleteAccount = createAction(
+  '[Accounts] Delete Account',
+  props<{ accountId: string }>()
+);
+export const deleteAccountSuccess = createAction(
+  '[Accounts] Delete Account Success',
+  props<{ accountId: string }>()
+);
+export const deleteAccountFailure = createAction(
+  '[Accounts] Delete Account Failure',
+  props<{ error: any }>()
+);

@@ -85,4 +85,42 @@ export class AccountEffects {
       tap(() => this.loadingFacade.stopLoading())
     )
   );
+
+  createNewTransaction$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AccountActions.createTransaction),
+      tap(() => this.loadingFacade.startLoading()),
+      switchMap((action) =>
+        this.accountService.createNewTransaction(action.accountId).pipe(
+          map((transactionResponse) =>
+            AccountActions.createTransactionSuccess({
+              transaction: transactionResponse.data,
+            })
+          ),
+          catchError((error) =>
+            of(AccountActions.createTransactionFailure({ error }))
+          )
+        )
+      ),
+      tap(() => this.loadingFacade.stopLoading())
+    )
+  );
+
+  deleteAccount$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AccountActions.deleteAccount),
+      tap(() => this.loadingFacade.startLoading()),
+      switchMap((action) =>
+        this.accountService.deleteAccount(action.accountId).pipe(
+          map(() =>
+            AccountActions.deleteAccountSuccess({ accountId: action.accountId })
+          ),
+          catchError((error) =>
+            of(AccountActions.deleteAccountFailure({ error }))
+          )
+        )
+      ),
+      tap(() => this.loadingFacade.stopLoading())
+    )
+  );
 }
