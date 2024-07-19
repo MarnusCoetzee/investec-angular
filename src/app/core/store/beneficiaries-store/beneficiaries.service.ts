@@ -19,11 +19,36 @@ export interface BeneficiaryPaymentItem {
   accountId: string;
 }
 
+export interface BeneficiaryData {
+  beneficiaryName: string;
+  cellNo: string;
+  emailAddress: string;
+  referenceName: string;
+}
+
+export interface CreatedBeneficiaryResponse {
+  beneficiaryId: string;
+  accountNumber: string;
+  code: string;
+  bank: string;
+  beneficiaryName: string;
+  lastPaymentAmount: string;
+  lastPaymentDate: string;
+  cellNo: string;
+  emailAddress: string;
+  name: string;
+  referenceAccountNumber: string;
+  referenceName: string;
+  categoryId: string;
+  profileId: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class BeneficiaryService {
   private baseUrl = 'http://localhost:3000/za/pb/v1/accounts/beneficiaries';
+  private jsonType = 'application/json';
 
   constructor(private http: HttpClient) {}
 
@@ -38,13 +63,23 @@ export class BeneficiaryService {
   ): Observable<any> {
     const url = `http://localhost:3000/za/pb/v1/accounts/${beneficiaryPaymentItem.accountId}/paymultiple`;
     const headers = new HttpHeaders({
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+      Accept: this.jsonType,
+      'Content-Type': this.jsonType,
       Authorization: 'YOUR_AUTHORIZATION_TOKEN',
     });
     const body: PayBeneficiaryRequest = {
       paymentList: beneficiaryPaymentItem.paymentList,
     };
     return this.http.post(url, body, { headers });
+  }
+
+  createBeneficiary(beneficiaryData: BeneficiaryData, token: string) {
+    const headers = new HttpHeaders({
+      Accept: this.jsonType,
+      'Content-Type': this.jsonType,
+      Authorization: token
+    })
+
+    return this.http.post(this.baseUrl, beneficiaryData, { headers });
   }
 }

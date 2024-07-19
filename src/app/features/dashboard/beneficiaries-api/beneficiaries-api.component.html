@@ -1,4 +1,6 @@
 <div class="beneficiary-container">
+  <button mat-raised-button (click)="handleShowCreateBeneficiaryDialog()">Create beneficary</button>
+  
   <app-beneficiary-details
     *ngFor="let beneficiary of beneficiaries$ | async"
     [beneficiary]="beneficiary"
