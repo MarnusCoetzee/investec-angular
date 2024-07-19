@@ -1,0 +1,16 @@
+<mat-card *ngIf="accountBalance$ | async as accountBalanceData">
+  <mat-grid-list cols="2" rowHeight="60px">
+    <mat-grid-tile>Account ID:</mat-grid-tile>
+    <mat-grid-tile>{{ accountBalanceData.accountId }}</mat-grid-tile>
+    <mat-grid-tile>Current Balance:</mat-grid-tile>
+    <mat-grid-tile>{{
+      accountBalanceData.currentBalance | currency : "R"
+    }}</mat-grid-tile>
+    <mat-grid-tile>Available Balance:</mat-grid-tile>
+    <mat-grid-tile>{{
+      accountBalanceData.availableBalance | currency : "R"
+    }}</mat-grid-tile>
+    <mat-grid-tile>Currency:</mat-grid-tile>
+    <mat-grid-tile>{{ accountBalanceData.currency }}</mat-grid-tile>
+  </mat-grid-list>
+</mat-card>

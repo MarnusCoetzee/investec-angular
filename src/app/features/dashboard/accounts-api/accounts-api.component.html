@@ -1,0 +1,11 @@
+<div class="accounts-api-container">
+  <div class="account-details-output">
+    <div *ngFor="let account of accounts$ | async">
+      <app-account-tile
+        [accountData]="account"
+        (viewBalanceSelected)="handleViewBalanceSelected($event)"
+        (viewTransactionsSelected)="handleViewTransactionsSelected($event)"
+      ></app-account-tile>
+    </div>
+  </div>
+</div>

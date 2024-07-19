@@ -1,0 +1,13 @@
+<mat-card>
+  <div *ngIf="transactions$ | async as transactions">
+    <div *ngIf="transactions?.length === 0">
+      <div class="no-transactions-container">
+        <h2>No transactions found.</h2>
+      </div>
+    </div>
+
+    <div *ngIf="transactions?.length > 0">
+      {{ transactions | json }}
+    </div>
+  </div>
+</mat-card>
