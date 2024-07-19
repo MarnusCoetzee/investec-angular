@@ -1,1 +1,26 @@
-<p>add-account works!</p>
+<div class="add-new-account-form">
+  <div class="heading">
+    <h2>New Account</h2>
+  </div>
+  <form [formGroup]="addAccountForm">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Account Name"
+        [formControlName]="'accountName'"
+      />
+    </mat-form-field>
+  </form>
+
+  <div class="action-btn-container">
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="addAccountForm.invalid"
+      (click)="handleSaveNewAccount()"
+    >
+      Save
+    </button>
+    <button mat-raised-button color="tertiary" mat-dialog-close>Cancel</button>
+  </div>
+</div>

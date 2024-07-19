@@ -42,7 +42,10 @@ export const getAccountTransactionsFailure = createAction(
   props<{ error: any }>()
 );
 
-export const addNewAccount = createAction('[Accounts] Add New Account');
+export const addNewAccount = createAction(
+  '[Accounts] Add New Account',
+  props<{ account: any }>()
+);
 export const addNewAccountSuccess = createAction(
   '[Accounts] Add New Account',
   props<{ account: any }>()

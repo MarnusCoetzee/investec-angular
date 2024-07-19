@@ -64,11 +64,29 @@ export const accountsReducer = createReducer(
     loading: false,
   })),
   on(AccountActions.addNewAccount, (state) => ({ ...state, loading: true })),
-  on(AccountActions.addNewAccountSuccess, (state, { account }) => ({
-    ...state,
-    loading: false,
-    accounts: [...state.accounts, { account }],
-  })),
+  on(AccountActions.addNewAccountSuccess, (state, { account }) => {
+    const normalizedAccount = normalizeAccountData(account);
+    const existingIndex = state.accounts.findIndex(
+      (acc: { accountId: any }) => acc.accountId === normalizedAccount.accountId
+    );
+    if (existingIndex !== -1) {
+      return {
+        ...state,
+        loading: false,
+        accounts: [
+          ...state.accounts.slice(0, existingIndex),
+          normalizedAccount,
+          ...state.accounts.slice(existingIndex + 1),
+        ],
+      };
+    } else {
+      return {
+        ...state,
+        loading: false,
+        accounts: [...state.accounts, normalizedAccount],
+      };
+    }
+  }),
   on(AccountActions.addNewAccountFailure, (state) => ({
     ...state,
     loading: false,
@@ -103,3 +121,11 @@ export const accountsReducer = createReducer(
     loading: false,
   }))
 );
+
+function normalizeAccountData(data: any): any {
+  if (data.data) {
+    return data.data;
+  } else {
+    return data;
+  }
+}

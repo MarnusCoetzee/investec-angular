@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -24,9 +24,23 @@ export class AccountService {
     return this.http.get<any>(url);
   }
 
-  addNewAccount(): Observable<any> {
-    const url = `${this.baseUrl}/balance`;
-    return this.http.post<any>(url, {});
+  addNewAccount(newAccount: any): Observable<any> {
+    const url = `${this.baseUrl}`;
+    const headers = new HttpHeaders({
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: 'YOUR_AUTHORIZATION_TOKEN', // Replace with your actual token
+    });
+
+    const body = {
+      accountId: newAccount.accountId,
+      accountNumber: newAccount.accountNumber,
+      accountName: newAccount.accountName,
+      referenceName: newAccount.referenceName,
+      productName: newAccount.productName,
+    };
+
+    return this.http.post<any>(url, body, { headers });
   }
 
   createNewTransaction(accountId: string): Observable<any> {
@@ -37,5 +51,23 @@ export class AccountService {
   deleteAccount(accountId: string): Observable<any> {
     const url = `${this.baseUrl}/${accountId}`;
     return this.http.delete<any>(url);
+  }
+
+  createNewAccountDetails(accountName: string): any {
+    const newAccount = {
+      accountName,
+      referenceName: accountName,
+      accountId: this.generateAccountNumber(23),
+      accountNumber: this.generateAccountNumber(10),
+      productName: 'Private Bank Account',
+    };
+    return newAccount;
+  }
+
+  private generateAccountNumber(length: number): string {
+    const randomNumber =
+      Math.floor(Math.random() * 90000000000000000000) + 1000000000000000000;
+    const accountNumber = randomNumber.toString().padStart(length, '0');
+    return accountNumber;
   }
 }

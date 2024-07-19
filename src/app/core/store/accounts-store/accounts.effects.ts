@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, take, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import * as AccountActions from './accounts.actions';
 import { AccountService } from './accounts.service';
@@ -73,9 +73,10 @@ export class AccountEffects {
   addNewAccount$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AccountActions.addNewAccount),
-      tap(() => this.loadingFacade.startLoading()),
-      switchMap(() =>
-        this.accountService.addNewAccount().pipe(
+      tap((action) => console.log(action)),
+      take(1),
+      switchMap((action) =>
+        this.accountService.addNewAccount(action.account).pipe(
           map((account) => AccountActions.addNewAccountSuccess({ account })),
           catchError((error) =>
             of(AccountActions.addNewAccountFailure({ error }))

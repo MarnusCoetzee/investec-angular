@@ -1,13 +1,52 @@
-<mat-card>
-  <div *ngIf="transactions$ | async as transactions">
-    <div *ngIf="transactions?.length === 0">
-      <div class="no-transactions-container">
-        <h2>No transactions found.</h2>
-      </div>
-    </div>
-
-    <div *ngIf="transactions?.length > 0">
-      {{ transactions | json }}
+<div
+  *ngIf="transactions$ | async as transactions"
+  class="account-transactions-container"
+>
+  <div *ngIf="transactions?.length === 0">
+    <div class="no-transactions-container">
+      <h2>No transactions found.</h2>
     </div>
   </div>
-</mat-card>
+
+  <div *ngIf="transactions?.length > 0">
+    <div *ngFor="let transactionData of transactions">
+      <mat-card *ngIf="transactionData">
+        <mat-expansion-panel [expanded]="expanded">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Transaction Details for {{ transactionData.transactionDate }}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-grid-list cols="2" rowHeight="60px">
+            <mat-grid-tile>Account ID:</mat-grid-tile>
+            <mat-grid-tile>{{ transactionData.accountId }}</mat-grid-tile>
+            <mat-grid-tile>Type:</mat-grid-tile>
+            <mat-grid-tile>{{ transactionData.type }}</mat-grid-tile>
+            <mat-grid-tile>Transaction Type:</mat-grid-tile>
+            <mat-grid-tile>{{ transactionData.transactionType }}</mat-grid-tile>
+            <mat-grid-tile>Status:</mat-grid-tile>
+            <mat-grid-tile>{{ transactionData.status }}</mat-grid-tile>
+            <mat-grid-tile>Description:</mat-grid-tile>
+            <mat-grid-tile>{{ transactionData.description }}</mat-grid-tile>
+            <mat-grid-tile>Card Number:</mat-grid-tile>
+            <mat-grid-tile>{{ transactionData.cardNumber }}</mat-grid-tile>
+            <mat-grid-tile>Posted Order:</mat-grid-tile>
+            <mat-grid-tile>{{ transactionData.postedOrder }}</mat-grid-tile>
+            <mat-grid-tile>Posting Date:</mat-grid-tile>
+            <mat-grid-tile>{{ transactionData.postingDate }}</mat-grid-tile>
+            <mat-grid-tile>Value Date:</mat-grid-tile>
+            <mat-grid-tile>{{ transactionData.valueDate }}</mat-grid-tile>
+            <mat-grid-tile>Action Date:</mat-grid-tile>
+            <mat-grid-tile>{{ transactionData.actionDate }}</mat-grid-tile>
+            <mat-grid-tile>Transaction Date:</mat-grid-tile>
+            <mat-grid-tile>{{ transactionData.transactionDate }}</mat-grid-tile>
+            <mat-grid-tile>Amount:</mat-grid-tile>
+            <mat-grid-tile>{{ transactionData.amount }}</mat-grid-tile>
+            <mat-grid-tile>Running Balance:</mat-grid-tile>
+            <mat-grid-tile>{{ transactionData.runningBalance }}</mat-grid-tile>
+          </mat-grid-list>
+        </mat-expansion-panel>
+      </mat-card>
+    </div>
+  </div>
+</div>

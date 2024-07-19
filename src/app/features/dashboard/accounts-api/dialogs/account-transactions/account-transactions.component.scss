@@ -1,6 +1,5 @@
 mat-card {
   width: 500px;
-  min-height: 250px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -9,4 +8,18 @@ mat-card {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+mat-grid-tile {
+  text-align: right;
+}
+
+.account-transactions-container {
+  min-width: 500px;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 1rem;
 }

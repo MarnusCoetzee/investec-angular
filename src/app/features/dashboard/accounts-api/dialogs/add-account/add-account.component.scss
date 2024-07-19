@@ -1,0 +1,18 @@
+.add-new-account-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 500px;
+  min-height: 250px;
+  padding: 1rem;
+}
+
+.action-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  button {
+    width: 200px;
+  }
+}

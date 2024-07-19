@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { AccountFacade } from '../../../core/store/accounts-store/accounts.facade';
 import { MatButtonModule } from '@angular/material/button';
 import { AsyncPipe, JsonPipe, NgFor } from '@angular/common';
-import { map } from 'rxjs';
+import { map, take } from 'rxjs';
 import { AccountTileComponent } from './account-tile/account-tile.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { AccountBalanceComponent } from './dialogs/account-balance/account-balance.component';
 import { AccountTransactionsComponent } from './dialogs/account-transactions/account-transactions.component';
 import { AddAccountComponent } from './dialogs/add-account/add-account.component';
+import { AccountService } from '../../../core/store/accounts-store/accounts.service';
 
 @Component({
   selector: 'app-accounts-api',
@@ -27,7 +28,8 @@ export class AccountsApiComponent {
   accounts$ = this.accountFacade.accounts$.pipe(map((res) => res.accounts));
   constructor(
     private accountFacade: AccountFacade,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+    private accountService: AccountService
   ) {
     this.accountFacade.getAllAccounts();
     this.accounts$.subscribe((res) => console.log(res));
@@ -45,9 +47,19 @@ export class AccountsApiComponent {
     });
   }
 
-  handleAddAccount(): void {
-    // this.matDialog.open(AddAccountComponent);
-    // this.accountFacade.addNewAccount();
+  handleAddAccountDialog(): void {
+    this.matDialog
+      .open(AddAccountComponent)
+      .afterClosed()
+      .pipe(take(1))
+      .subscribe((accountNameForm) => {
+        if (accountNameForm) {
+          const newAccount = this.accountService.createNewAccountDetails(
+            accountNameForm.accountName
+          );
+          this.accountFacade.addNewAccount(newAccount);
+        }
+      });
   }
 
   handleCreateNewTransaction(event: any): void {
