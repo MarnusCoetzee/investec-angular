@@ -1,8 +1,14 @@
 <div class="dashboard-page-container">
   <mat-tab-group>
     <mat-tab label="Accounts API">
-      <app-accounts-api></app-accounts-api>
+      <ng-template matTabContent>
+        <app-accounts-api></app-accounts-api>
+      </ng-template>
     </mat-tab>
-    <mat-tab label="Cards API"> <app-cards-api></app-cards-api> </mat-tab>
+    <mat-tab label="Cards API">
+      <ng-template matTabContent>
+        <app-cards-api></app-cards-api>
+      </ng-template>
+    </mat-tab>
   </mat-tab-group>
 </div>

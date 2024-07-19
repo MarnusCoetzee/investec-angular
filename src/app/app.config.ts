@@ -11,6 +11,8 @@ import { provideHttpClient } from '@angular/common/http';
 import { loadingReducer } from './core/store/app-state/app-state.reducer';
 import { accountsReducer } from './core/store/accounts-store/accounts.reducer';
 import { AccountEffects } from './core/store/accounts-store/accounts.effects';
+import { cardReducer } from './core/store/cards-state/card.reducer';
+import { CardEffects } from './core/store/cards-state/card.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,8 +22,9 @@ export const appConfig: ApplicationConfig = {
       auth: authReducer,
       loading: loadingReducer,
       accounts: accountsReducer,
+      card: cardReducer,
     }),
-    provideEffects(AuthEffects, AccountEffects),
+    provideEffects(AuthEffects, AccountEffects, CardEffects),
     provideHttpClient(),
   ],
 };
