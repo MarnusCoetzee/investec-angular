@@ -2,5 +2,6 @@
   <app-beneficiary-details
     *ngFor="let beneficiary of beneficiaries$ | async"
     [beneficiary]="beneficiary"
+    (payBeneficiary)="handlePayBeneficiary($event)"
   ></app-beneficiary-details>
 </div>

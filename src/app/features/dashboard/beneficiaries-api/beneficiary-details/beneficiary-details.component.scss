@@ -3,3 +3,14 @@ mat-card {
   margin: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+
+.action-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1rem;
+  button {
+    width: 200px;
+  }
+}

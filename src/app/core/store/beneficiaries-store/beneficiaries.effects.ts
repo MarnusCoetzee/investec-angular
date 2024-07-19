@@ -17,12 +17,25 @@ export class BeneficiaryEffects {
       ofType(BeneficiaryActions.getBeneficiaries),
       switchMap(() =>
         this.beneficiaryService.getBeneficiaries().pipe(
-          tap((data) => console.log(data)),
           map((beneficiaries) =>
             BeneficiaryActions.getBeneficiariesSuccess({ beneficiaries })
           ),
           catchError((error) =>
             of(BeneficiaryActions.getBeneficiariesFailure({ error }))
+          )
+        )
+      )
+    )
+  );
+
+  payBeneficiary$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(BeneficiaryActions.payBeneficiary),
+      switchMap((action) =>
+        this.beneficiaryService.payBeneficiary(action.benItem).pipe(
+          map(() => BeneficiaryActions.payBeneficiarySuccess()),
+          catchError((error) =>
+            of(BeneficiaryActions.payBeneficiaryFailure({ error }))
           )
         )
       )

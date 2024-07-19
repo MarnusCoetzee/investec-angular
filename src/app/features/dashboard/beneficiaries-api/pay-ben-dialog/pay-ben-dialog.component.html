@@ -1,0 +1,53 @@
+<div class="pay-ben-dialog-container">
+  <h1>Make a payment</h1>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Choose account</mat-label>
+      <mat-select formControlName="fromAccount" required>
+        <mat-option *ngFor="let account of accounts$ | async" [value]="account">
+          {{ account.accountName }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="myForm.get('dropdownField')?.hasError('required')">
+        Dropdown is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Amount</mat-label>
+      <input matInput type="number" formControlName="amountField" required />
+      <mat-error *ngIf="myForm.get('amountField')?.hasError('required')">
+        Amount is required
+      </mat-error>
+      <mat-error *ngIf="myForm.get('amountField')?.hasError('min')">
+        Amount must be greater than 0
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>To Reference</mat-label>
+      <input matInput formControlName="toReferenceField" required />
+      <mat-error *ngIf="myForm.get('toReferenceField')?.hasError('required')">
+        To Reference is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Your Reference</mat-label>
+      <input matInput formControlName="yourReferenceField" required />
+      <mat-error *ngIf="myForm.get('yourReferenceField')?.hasError('required')">
+        Your Reference is required
+      </mat-error>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!myForm.valid"
+    >
+      Submit
+    </button>
+    <button mat-raised-button color="tertiary" mat-dialog-close>Cancel</button>
+  </form>
+</div>

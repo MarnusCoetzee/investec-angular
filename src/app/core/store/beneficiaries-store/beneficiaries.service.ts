@@ -1,23 +1,22 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-interface Beneficiary {
+export interface PayBeneficiaryRequest {
+  paymentList: PaymentList[];
+}
+
+export interface PaymentList {
   beneficiaryId: string;
-  accountNumber: string;
-  code: string;
-  bank: string;
-  beneficiaryName: string;
-  lastPaymentAmount: string;
-  lastPaymentDate: string;
-  cellNo: string | null;
-  emailAddress: string | null;
-  name: string;
-  referenceAccountNumber: string;
-  referenceName: string;
-  categoryId: string;
-  profileId: string;
+  amount: number;
+  myReference: string;
+  theirReference: string;
+}
+
+export interface BeneficiaryPaymentItem {
+  paymentList: PaymentList[];
+  accountId: string;
 }
 
 @Injectable({
@@ -28,9 +27,24 @@ export class BeneficiaryService {
 
   constructor(private http: HttpClient) {}
 
-  getBeneficiaries(): Observable<Beneficiary[]> {
+  getBeneficiaries(): Observable<any[]> {
     return this.http
-      .get<{ data: { result: Beneficiary[] } }>(this.baseUrl)
+      .get<{ data: { result: any[] } }>(this.baseUrl)
       .pipe(map((response) => response.data.result));
+  }
+
+  payBeneficiary(
+    beneficiaryPaymentItem: BeneficiaryPaymentItem
+  ): Observable<any> {
+    const url = `http://localhost:3000/za/pb/v1/accounts/${beneficiaryPaymentItem.accountId}/paymultipe`;
+    const headers = new HttpHeaders({
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: 'YOUR_AUTHORIZATION_TOKEN',
+    });
+    const body: PayBeneficiaryRequest = {
+      paymentList: beneficiaryPaymentItem.paymentList,
+    };
+    return this.http.post(url, body, { headers });
   }
 }

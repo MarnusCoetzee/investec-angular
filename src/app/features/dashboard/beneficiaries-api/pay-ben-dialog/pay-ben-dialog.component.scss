@@ -1,0 +1,18 @@
+.pay-ben-dialog-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: space-evenly;
+  align-items: center;
+  min-width: 500px;
+  padding: 1rem;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    mat-form-field {
+      min-width: 350px;
+    }
+  }
+}

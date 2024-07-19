@@ -36,5 +36,11 @@
       <mat-grid-tile>Profile ID:</mat-grid-tile>
       <mat-grid-tile>{{ beneficiary.profileId }}</mat-grid-tile>
     </mat-grid-list>
+
+    <div class="action-btn">
+      <button mat-raised-button color="primary" (click)="openDialog()">
+        Pay Beneficiary
+      </button>
+    </div>
   </mat-expansion-panel>
 </mat-card>

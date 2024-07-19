@@ -27,5 +27,18 @@ export const beneficiaryReducer = createReducer(
     ...state,
     error,
     loading: false,
+  })),
+  on(BeneficiaryActions.payBeneficiary, (state) => ({
+    ...state,
+    loading: true,
+  })),
+  on(BeneficiaryActions.payBeneficiarySuccess, (state) => ({
+    ...state,
+    loading: false,
+  })),
+  on(BeneficiaryActions.payBeneficiaryFailure, (state, { error }) => ({
+    ...state,
+    error,
+    loading: false,
   }))
 );

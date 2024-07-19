@@ -14,4 +14,8 @@ export class BeneficiaryFacade {
   loadBeneficiaries() {
     this.store.dispatch(BeneficiaryActions.getBeneficiaries());
   }
+
+  payBeneficiary(benItem: any) {
+    this.store.dispatch(BeneficiaryActions.payBeneficiary({ benItem }));
+  }
 }
