@@ -3,23 +3,30 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import * as AuthActions from './auth.actions';
-import { AuthService } from './auth.service'; // Replace with your authentication service
+import { AuthService } from './auth.service';
+import { LoadingFacade } from '../app-state/app-state.facade';
 
 @Injectable()
 export class AuthEffects {
-  constructor(private actions$: Actions, private authService: AuthService) {}
+  constructor(
+    private actions$: Actions,
+    private authService: AuthService,
+    private loadingFacade: LoadingFacade
+  ) {}
 
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.loginStart),
-      switchMap(() =>
-        this.authService.login().pipe(
+      tap(() => this.loadingFacade.startLoading()),
+      switchMap((action) =>
+        this.authService.login(action.username, action.password).pipe(
           map((user) => AuthActions.loginSuccess({ user })),
           catchError((error) =>
             of(AuthActions.loginFailure({ error: error.message }))
           )
         )
-      )
+      ),
+      tap(() => this.loadingFacade.stopLoading())
     )
   );
 }
