@@ -65,9 +65,15 @@ export class AccountService {
   }
 
   private generateAccountNumber(length: number): string {
-    const randomNumber =
-      Math.floor(Math.random() * 90000000000000000000) + 1000000000000000000;
-    const accountNumber = randomNumber.toString().padStart(length, '0');
+    const characters = '0123456789';
+    let accountNumber = '';
+
+    for (let i = 0; i < length; i++) {
+      accountNumber += characters.charAt(
+        Math.floor(Math.random() * characters.length)
+      );
+    }
+
     return accountNumber;
   }
 }
