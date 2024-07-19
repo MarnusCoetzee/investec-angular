@@ -69,4 +69,20 @@ export class AccountEffects {
       tap(() => this.loadingFacade.stopLoading())
     )
   );
+
+  addNewAccount$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AccountActions.addNewAccount),
+      tap(() => this.loadingFacade.startLoading()),
+      switchMap(() =>
+        this.accountService.addNewAccount().pipe(
+          map((account) => AccountActions.addNewAccountSuccess({ account })),
+          catchError((error) =>
+            of(AccountActions.addNewAccountFailure({ error }))
+          )
+        )
+      ),
+      tap(() => this.loadingFacade.stopLoading())
+    )
+  );
 }

@@ -62,5 +62,15 @@ export const accountsReducer = createReducer(
     ...state,
     error,
     loading: false,
+  })),
+  on(AccountActions.addNewAccount, (state) => ({ ...state, loading: true })),
+  on(AccountActions.addNewAccountSuccess, (state, { account }) => ({
+    ...state,
+    loading: false,
+    accounts: [...state.accounts, { account }],
+  })),
+  on(AccountActions.addNewAccountFailure, (state) => ({
+    ...state,
+    loading: false,
   }))
 );

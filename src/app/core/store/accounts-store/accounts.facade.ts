@@ -25,4 +25,8 @@ export class AccountFacade {
   getAccountTransactions(accountId: string) {
     this.store.dispatch(AccountActions.getAccountTransactions({ accountId }));
   }
+
+  addNewAccount() {
+    this.store.dispatch(AccountActions.addNewAccount());
+  }
 }

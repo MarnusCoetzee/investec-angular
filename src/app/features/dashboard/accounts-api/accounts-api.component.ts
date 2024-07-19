@@ -7,6 +7,7 @@ import { AccountTileComponent } from './account-tile/account-tile.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { AccountBalanceComponent } from './dialogs/account-balance/account-balance.component';
 import { AccountTransactionsComponent } from './dialogs/account-transactions/account-transactions.component';
+import { AddAccountComponent } from './dialogs/add-account/add-account.component';
 
 @Component({
   selector: 'app-accounts-api',
@@ -41,5 +42,10 @@ export class AccountsApiComponent {
     this.matDialog.open(AccountTransactionsComponent, {
       data: event,
     });
+  }
+
+  handleAddAccount(): void {
+    // this.matDialog.open(AddAccountComponent);
+    // this.accountFacade.addNewAccount();
   }
 }

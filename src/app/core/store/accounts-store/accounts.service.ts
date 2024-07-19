@@ -23,4 +23,9 @@ export class AccountService {
     const url = `${this.baseUrl}/${accountId}/transactions`;
     return this.http.get<any>(url);
   }
+
+  addNewAccount(): Observable<any> {
+    const url = `${this.baseUrl}/balance`;
+    return this.http.post<any>(url, {});
+  }
 }

@@ -41,3 +41,13 @@ export const getAccountTransactionsFailure = createAction(
   '[Accounts] Get Account Transactions Failure',
   props<{ error: any }>()
 );
+
+export const addNewAccount = createAction('[Accounts] Add New Account');
+export const addNewAccountSuccess = createAction(
+  '[Accounts] Add New Account',
+  props<{ account: any }>()
+);
+export const addNewAccountFailure = createAction(
+  '[Accounts] Add New Account',
+  props<{ error: any }>()
+);
