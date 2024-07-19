@@ -5,13 +5,15 @@ import { of } from 'rxjs';
 import * as AuthActions from './auth.actions';
 import { AuthService } from './auth.service';
 import { LoadingFacade } from '../app-state/app-state.facade';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthEffects {
   constructor(
     private actions$: Actions,
     private authService: AuthService,
-    private loadingFacade: LoadingFacade
+    private loadingFacade: LoadingFacade,
+    private router: Router
   ) {}
 
   login$ = createEffect(() =>
@@ -20,7 +22,11 @@ export class AuthEffects {
       tap(() => this.loadingFacade.startLoading()),
       switchMap((action) =>
         this.authService.login(action.username, action.password).pipe(
-          map((user) => AuthActions.loginSuccess({ user })),
+          tap((user) => console.log('Login successful', user)),
+          map((user) => {
+            this.router.navigate(['/dashboard']);
+            return AuthActions.loginSuccess({ user });
+          }),
           catchError((error) =>
             of(AuthActions.loginFailure({ error: error.message }))
           )

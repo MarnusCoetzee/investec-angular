@@ -7,3 +7,8 @@ export const selectIsAuthenticated = createSelector(
   selectAuthState,
   (state) => state.isAuthenticated
 );
+
+export const selectUserDetails = createSelector(
+  selectAuthState,
+  (state) => state.user
+);
