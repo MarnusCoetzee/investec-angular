@@ -1,0 +1,6 @@
+<div class="beneficiary-container">
+  <app-beneficiary-details
+    *ngFor="let beneficiary of beneficiaries$ | async"
+    [beneficiary]="beneficiary"
+  ></app-beneficiary-details>
+</div>

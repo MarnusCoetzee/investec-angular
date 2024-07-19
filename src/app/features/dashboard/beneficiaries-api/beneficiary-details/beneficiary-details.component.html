@@ -1,0 +1,40 @@
+<mat-card *ngIf="beneficiary">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Beneficiary Details: {{ beneficiary.beneficiaryName }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-grid-list cols="2" rowHeight="60px">
+      <mat-grid-tile>Beneficiary ID:</mat-grid-tile>
+      <mat-grid-tile>{{ beneficiary.beneficiaryId }}</mat-grid-tile>
+      <mat-grid-tile>Account Number:</mat-grid-tile>
+      <mat-grid-tile>{{ beneficiary.accountNumber }}</mat-grid-tile>
+      <mat-grid-tile>Code:</mat-grid-tile>
+      <mat-grid-tile>{{ beneficiary.code }}</mat-grid-tile>
+      <mat-grid-tile>Bank:</mat-grid-tile>
+      <mat-grid-tile>{{ beneficiary.bank }}</mat-grid-tile>
+      <mat-grid-tile>Beneficiary Name:</mat-grid-tile>
+      <mat-grid-tile>{{ beneficiary.beneficiaryName }}</mat-grid-tile>
+      <mat-grid-tile>Last Payment Amount:</mat-grid-tile>
+      <mat-grid-tile>{{ beneficiary.lastPaymentAmount }}</mat-grid-tile>
+      <mat-grid-tile>Last Payment Date:</mat-grid-tile>
+      <mat-grid-tile>{{ beneficiary.lastPaymentDate }}</mat-grid-tile>
+      <mat-grid-tile>Cell No:</mat-grid-tile>
+      <mat-grid-tile>{{ beneficiary.cellNo }}</mat-grid-tile>
+      <mat-grid-tile>Email Address:</mat-grid-tile>
+      <mat-grid-tile>{{ beneficiary.emailAddress }}</mat-grid-tile>
+      <mat-grid-tile>Name:</mat-grid-tile>
+      <mat-grid-tile>{{ beneficiary.name }}</mat-grid-tile>
+      <mat-grid-tile>Reference Account Number:</mat-grid-tile>
+      <mat-grid-tile>{{ beneficiary.referenceAccountNumber }}</mat-grid-tile>
+      <mat-grid-tile>Reference Name:</mat-grid-tile>
+      <mat-grid-tile>{{ beneficiary.referenceName }}</mat-grid-tile>
+      <mat-grid-tile>Category ID:</mat-grid-tile>
+      <mat-grid-tile>{{ beneficiary.categoryId }}</mat-grid-tile>
+      <mat-grid-tile>Profile ID:</mat-grid-tile>
+      <mat-grid-tile>{{ beneficiary.profileId }}</mat-grid-tile>
+    </mat-grid-list>
+  </mat-expansion-panel>
+</mat-card>

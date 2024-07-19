@@ -13,6 +13,8 @@ import { accountsReducer } from './core/store/accounts-store/accounts.reducer';
 import { AccountEffects } from './core/store/accounts-store/accounts.effects';
 import { cardReducer } from './core/store/cards-state/card.reducer';
 import { CardEffects } from './core/store/cards-state/card.effects';
+import { beneficiaryReducer } from './core/store/beneficiaries-store/beneficiaries.reducer';
+import { BeneficiaryEffects } from './core/store/beneficiaries-store/beneficiaries.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -23,8 +25,14 @@ export const appConfig: ApplicationConfig = {
       loading: loadingReducer,
       accounts: accountsReducer,
       card: cardReducer,
+      beneficiary: beneficiaryReducer,
     }),
-    provideEffects(AuthEffects, AccountEffects, CardEffects),
+    provideEffects(
+      AuthEffects,
+      AccountEffects,
+      CardEffects,
+      BeneficiaryEffects
+    ),
     provideHttpClient(),
   ],
 };
