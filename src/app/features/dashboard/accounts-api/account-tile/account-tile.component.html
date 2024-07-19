@@ -1,30 +1,41 @@
 <mat-card *ngIf="accountData">
-  <mat-grid-list cols="2" rowHeight="80px">
-    <mat-grid-tile>Account ID:</mat-grid-tile>
-    <mat-grid-tile>{{ accountData.accountId }}</mat-grid-tile>
-    <mat-grid-tile>Account Number:</mat-grid-tile>
-    <mat-grid-tile>{{ accountData.accountNumber }}</mat-grid-tile>
-    <mat-grid-tile>Account Name:</mat-grid-tile>
-    <mat-grid-tile>{{ accountData.accountName }}</mat-grid-tile>
-    <mat-grid-tile>Reference Name:</mat-grid-tile>
-    <mat-grid-tile>{{ accountData.referenceName }}</mat-grid-tile>
-    <mat-grid-tile>Product Name:</mat-grid-tile>
-    <mat-grid-tile>{{ accountData.productName }}</mat-grid-tile>
-  </mat-grid-list>
-  <div class="action-btn">
-    <button mat-raised-button color="primary" (click)="handleViewBalance()">
-      View Balance
-    </button>
-    <button mat-raised-button (click)="handleViewTransactions()">
-      View Transactions
-    </button>
-  </div>
-  <div class="action-btn">
-    <button mat-raised-button color="primary" (click)="handleNewTransaction()">
-      New Transaction
-    </button>
-    <button mat-raised-button (click)="handleDeleteAccount()">
-      Delete Account
-    </button>
-  </div>
+  <mat-expansion-panel [expanded]="false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Account: {{ accountData.accountName }} - {{ accountData.accountNumber }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-grid-list cols="2" rowHeight="40px">
+      <mat-grid-tile>Account ID:</mat-grid-tile>
+      <mat-grid-tile>{{ accountData.accountId }}</mat-grid-tile>
+      <mat-grid-tile>Account Number:</mat-grid-tile>
+      <mat-grid-tile>{{ accountData.accountNumber }}</mat-grid-tile>
+      <mat-grid-tile>Account Name:</mat-grid-tile>
+      <mat-grid-tile>{{ accountData.accountName }}</mat-grid-tile>
+      <mat-grid-tile>Reference Name:</mat-grid-tile>
+      <mat-grid-tile>{{ accountData.referenceName }}</mat-grid-tile>
+      <mat-grid-tile>Product Name:</mat-grid-tile>
+      <mat-grid-tile>{{ accountData.productName }}</mat-grid-tile>
+    </mat-grid-list>
+    <div class="action-btn">
+      <button mat-raised-button color="primary" (click)="handleViewBalance()">
+        View Balance
+      </button>
+      <button mat-raised-button (click)="handleViewTransactions()">
+        View Transactions
+      </button>
+    </div>
+    <div class="action-btn">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="handleNewTransaction()"
+      >
+        New Transaction
+      </button>
+      <button mat-raised-button (click)="handleDeleteAccount()">
+        Delete Account
+      </button>
+    </div>
+  </mat-expansion-panel>
 </mat-card>

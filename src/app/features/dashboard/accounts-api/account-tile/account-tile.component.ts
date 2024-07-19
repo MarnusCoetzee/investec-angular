@@ -2,12 +2,19 @@ import { NgIf } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
 
 @Component({
   selector: 'app-account-tile',
   standalone: true,
-  imports: [MatCardModule, MatGridListModule, NgIf, MatButtonModule],
+  imports: [
+    MatCardModule,
+    MatGridListModule,
+    NgIf,
+    MatButtonModule,
+    MatExpansionModule,
+  ],
   templateUrl: './account-tile.component.html',
   styleUrl: './account-tile.component.scss',
 })
