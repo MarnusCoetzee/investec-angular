@@ -36,7 +36,7 @@ export class BeneficiaryService {
   payBeneficiary(
     beneficiaryPaymentItem: BeneficiaryPaymentItem
   ): Observable<any> {
-    const url = `http://localhost:3000/za/pb/v1/accounts/${beneficiaryPaymentItem.accountId}/paymultipe`;
+    const url = `http://localhost:3000/za/pb/v1/accounts/${beneficiaryPaymentItem.accountId}/paymultiple`;
     const headers = new HttpHeaders({
       Accept: 'application/json',
       'Content-Type': 'application/json',

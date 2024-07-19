@@ -40,7 +40,7 @@ export class BeneficiaryDetailsComponent {
             accountId: result.fromAccount.accountId,
             paymentList: [
               {
-                beneficiaryId: this.beneficiary.id,
+                beneficiaryId: this.beneficiary.beneficiaryId,
                 amount: result.amountField,
                 myReference: result.yourReferenceField,
                 theirReference: result.toReferenceField,
