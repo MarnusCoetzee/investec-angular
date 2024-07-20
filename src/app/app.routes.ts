@@ -31,4 +31,11 @@ export const routes: Routes = [
         './features/dashboard/components/dashboard-upcoming-trips/edit-trip/edit-trip.component'
       ).then((m) => m.EditTripComponent),
   },
+  {
+    path: 'dashboard/ai-chatbot',
+    loadComponent: () =>
+      import(
+        './features/dashboard/components/ai-chatbot/ai-chatbot.component'
+      ).then((m) => m.AiChatbotComponent),
+  },
 ];

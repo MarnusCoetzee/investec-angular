@@ -1,0 +1,19 @@
+<div class="chat-container" #scrollContainer>
+  <div
+    *ngFor="let message of messages"
+    class="message"
+    [ngClass]="{
+      user: message.sender === 'user',
+      bot: message.sender === 'bot'
+    }"
+  >
+    <div class="message-content" [innerHTML]="sanitizeHtml(message.text)"></div>
+  </div>
+</div>
+
+<div class="input-area">
+  <input #userInput type="text" (keyup.enter)="sendMessage()" />
+  <button mat-icon-button (click)="sendMessage()">
+    <mat-icon>send</mat-icon>
+  </button>
+</div>

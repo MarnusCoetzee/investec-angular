@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 export const FastActionItems = [
   {
     name: 'AI Chat',
-    navigateTo: '/chat',
+    navigateTo: '/dashboard/ai-chatbot',
     iconName: 'chat',
   },
   {
