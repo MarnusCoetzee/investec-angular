@@ -1,3 +1,77 @@
-<div class="landing-page-container">
-  <button mat-raised-button (click)="handleLogin()">Login</button>
+<div id="landing-page" *ngIf="!showLogIn">
+  <div class="flex flex-col w-svw h-svh gap-10 p-10 justify-center">
+    <div class="w-full flex justify-center">
+      <img
+        class="w-9/10 p-3"
+        src="../../../assets/logo.png"
+        alt="Voyage Finance"
+      />
+    </div>
+
+    <div class="flex flex-col gap-2 w-full text-center">
+      <p class="text-3xl font-bold">Explore the app</p>
+      <p class="text-xl font-normal">
+        Manage all your travel finances in one place with ease.
+      </p>
+    </div>
+
+    <button
+      class="bg-blue text-[white] text-lg h-10 font-normal"
+      (click)="handleLogin()"
+    >
+      Get started
+    </button>
+  </div>
+</div>
+
+<div class="flex flex-col w-svw h-svh gap-8 p-10" *ngIf="!showLogIn">
+  <div class="w-full flex justify-center">
+    <img
+      class="w-3/5 p-5"
+      src="../../../assets/logo.png"
+      alt="Voyage Finance"
+    />
+  </div>
+
+  <h1 class="text-4xl font-extrabold">Log in</h1>
+
+  <form class="flex flex-col gap-2" action="">
+    <p class="flex flex-col gap-1">
+      <mat-label>Email <span class="text-red">*</span></mat-label>
+      <input
+        matInput
+        placeholder="Enter your email"
+        class="outline outline-grey rounded-md p-2"
+      />
+    </p>
+
+    <p class="flex flex-col gap-1">
+      <mat-label>Password <span class="text-red">*</span></mat-label>
+      <input
+        matInput
+        placeholder="Create a password"
+        class="outline outline-grey rounded-md p-2"
+      />
+      <mat-hint>Must be at least 8 characters.</mat-hint>
+    </p>
+
+    <button
+      class="bg-blue text-[white] h-10 font-semibold"
+      (click)="handleLogin()"
+    >
+      Log in
+    </button>
+    <button
+      class="flex flex-row gap-1 outline outline-grey h-10 p-2 justify-center font-semibold"
+      (click)="handleLogin()"
+    >
+      <img class="h-5" src="../../../assets/google.ico" alt="" />
+      <div>Sign up with Google</div>
+    </button>
+  </form>
+
+  <p class="flex flex-row justify-center gap-1">
+    <span>Don't have an account?</span>
+    <a class="text-blue font-bold" href="">Sign Up</a>
+  </p>
 </div>

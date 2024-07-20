@@ -15,7 +15,6 @@ export const routes: Routes = [
       import('./features/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
       ),
-    canActivate: [AuthGuard],
   },
   {
     path: 'dashboard/view-trip/:id',
@@ -37,5 +36,13 @@ export const routes: Routes = [
       import(
         './features/dashboard/components/ai-chatbot/ai-chatbot.component'
       ).then((m) => m.AiChatbotComponent),
+  },
+
+  {
+    path: '**',
+    loadChildren: () =>
+      import('./features/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
   },
 ];
