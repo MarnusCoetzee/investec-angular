@@ -1,0 +1,11 @@
+<div class="dashboard-upcoming-trips-container">
+  <div class="dashboard-upcoming-trips-container__header">Upcoming Trips</div>
+  <div class="dashboard-upcoming-trips-container__trip-container">
+    <app-upcoming-trip-item
+      *ngFor="let trip of upcomingTrips"
+      [trip]="trip"
+      (editTripSelected)="editTrip($event)"
+      (tripSelected)="selectTrip($event)"
+    ></app-upcoming-trip-item>
+  </div>
+</div>

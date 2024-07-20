@@ -1,0 +1,15 @@
+.fast-actions-container {
+  width: 90vw;
+  padding-top: 3rem;
+  margin-bottom: 1rem;
+
+  &__header {
+    font-size: 1.5rem;
+  }
+
+  .fast-action-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}

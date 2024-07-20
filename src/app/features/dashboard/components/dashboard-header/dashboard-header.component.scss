@@ -1,0 +1,33 @@
+.dashboard-header-container {
+  height: 80px;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  width: 70vw;
+  flex: 2;
+  padding-left: 1rem;
+  .header-greeting {
+    font-size: x-large;
+  }
+  .header-img {
+    margin-top: 6px;
+  }
+}
+
+.header-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+}

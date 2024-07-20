@@ -1,0 +1,22 @@
+<mat-card>
+  <div class="mat-card-contents" (click)="handleTripSelected()">
+    <div class="mat-card-image">
+      <img [src]="trip.tripImageUrl" alt="trip image" />
+    </div>
+    <div class="mat-card-information">
+      <div class="text-item">
+        {{ trip.tripName }}
+      </div>
+      <div class="text-item">
+        {{ trip.tripSavingsGoal }}
+      </div>
+      <div class="text-item">{{ trip.startDate }} - {{ trip.endDate }}</div>
+    </div>
+
+    <div class="mat-card-action-item">
+      <button mat-icon-button (click)="handleEditTripSelected()">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-card>

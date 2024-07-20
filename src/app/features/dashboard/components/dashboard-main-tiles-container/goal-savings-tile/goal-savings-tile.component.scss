@@ -1,0 +1,45 @@
+.goal-savings-tile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 12rem;
+  height: 13rem;
+  background-color: #025464;
+  border-radius: 16px;
+  mat-icon {
+    color: white;
+  }
+
+  .tile-heading-img {
+    padding: 1rem;
+  }
+
+  .heading {
+    padding-left: 1rem;
+    font-size: 1.25rem;
+    color: white;
+  }
+
+  .savings-amount {
+    padding-left: 1rem;
+    font-size: 1.375rem;
+    color: white;
+  }
+
+  .savings-percentage {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-left: 1rem;
+    width: 80%;
+    color: white;
+    mat-progress-bar {
+      width: 100%;
+    }
+
+    .mdc-linear-progress__buffer-bar {
+      background-color: red !important;
+    }
+  }
+}
