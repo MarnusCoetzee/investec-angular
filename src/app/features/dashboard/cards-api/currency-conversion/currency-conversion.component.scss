@@ -1,3 +1,19 @@
+.top-bar {
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2255a129;
+    font-size: 24px;
+  }
+
+  ::ng-deep img.back-btn {
+    position: relative;
+    float: left;
+    margin-left: 15px;
+}
+
+
 .conversion-container {
     display: flex;
     flex-direction: column;

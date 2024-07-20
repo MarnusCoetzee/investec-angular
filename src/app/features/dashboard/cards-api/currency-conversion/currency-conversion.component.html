@@ -1,6 +1,18 @@
-<div class="conversion-container">
+<div class="top-bar">
+    <div class="back-btn">
+      <img src="assets/images/chevron-left.svg" alt="budget" class="back-btn" (click)="handleRouteBack() ">
+    </div>
     <h1 class="text-xl ">Currency conversion</h1>
+    <div class="empty-space"></div>
+  </div>
+
+<div class="conversion-container">
+
+    <img src="assets/images/conversion.svg" alt="budget">
     <div class="form-field">
+
+
+
         <label>From</label>
         <div class="inputs-container">
             <input class="input-field" [(ngModel)]="fromValue" />
@@ -33,3 +45,4 @@
 
     <button class="exchange-button" (click)="handleConvertCurrency()">Exchange</button>
 </div>
+
