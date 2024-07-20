@@ -12,11 +12,18 @@ import { AuthFacade } from '../../core/store/auth-store/auth.facade';
   styleUrl: './landing-page.component.scss',
 })
 export class LandingPageComponent {
+  showLogIn: boolean = false;
+
   constructor(private authFacade: AuthFacade) {}
+
   handleLogin(): void {
     this.authFacade.login(
       'yAxzQRFX97vOcyQAwluEU6H6ePxMA5eY',
       '4dY0PjEYqoBrZ99r'
     );
+  }
+
+  switchToLoginPage() {
+    this.showLogIn = true;
   }
 }
