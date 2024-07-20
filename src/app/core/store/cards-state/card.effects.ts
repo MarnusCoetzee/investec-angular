@@ -52,4 +52,16 @@ export class CardEffects {
       )
     )
   );
+
+  convertCurrency$ = createEffect(() => 
+    this.actions$.pipe(
+      ofType(CardActions.convertCurrency),
+      switchMap(({currencyConvertion}) => 
+        this.cardService.convertCurrency(currencyConvertion).pipe(
+          map((conversionResult) => { console.log('hmmm...',conversionResult); return CardActions.convertCurrencySuccess({conversionResult})})
+        )
+      )
+    )
+  )
+
 }

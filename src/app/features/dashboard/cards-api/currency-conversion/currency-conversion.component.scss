@@ -1,0 +1,98 @@
+.conversion-container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.field-container {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.up-down-arrow-container {
+    display: flex;
+    gap: .25;
+    :first-child {
+        color: #2255A1;
+    }
+    :last-child {
+        color: #FF4267;
+        transform: rotate(180deg);
+    }
+
+    * {
+        font-size: 2rem;
+    }
+}
+
+label {
+    color: #979797;
+}
+
+.inputs-container {
+    display: flex;
+    justify-content: space-between;
+    width: 15rem;
+    height: 2.5rem;
+    border-color: #979797;
+    border-width: .1rem;
+    border-style: solid;
+    border-radius: .5rem;
+    padding: .1rem;
+    align-items: center;
+    padding-left: .5rem;
+}
+
+.input-field {
+    outline: none;
+    border: none;
+    :focus {
+        outline: none;
+        border: none;
+    }
+}
+
+.exchange-button {
+    width: 15.5rem;
+    height: 2rem;
+    background-color: #2255A1;
+    color: white;
+    border-radius: .5rem;
+    border: none;
+}
+
+.devider {
+    height: 2rem;
+    width: .1rem;
+    background-color: #979797;
+}
+
+.currency-dropdown-button {
+    background: none;
+    border: none;
+    padding: .2rem;
+    width: 3rem;
+}
+
+.icons-container {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    :first-child {
+        transform: rotate(90deg);
+    }
+
+    * {
+        color: #979797;
+    }
+}
+
+
+button {
+    cursor: pointer;
+}

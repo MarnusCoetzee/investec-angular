@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
+import { CurrencyConversionComponent } from './cards-api/currency-conversion/currency-conversion.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'currency-convertion',
+    component: CurrencyConversionComponent
+  }
 ];
 
 @NgModule({

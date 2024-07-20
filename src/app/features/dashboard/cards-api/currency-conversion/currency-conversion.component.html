@@ -1,0 +1,35 @@
+<div class="conversion-container">
+    <h1 class="text-xl ">Currency conversion</h1>
+    <div class="form-field">
+        <label>From</label>
+        <div class="inputs-container">
+            <input class="input-field" [(ngModel)]="fromValue" />
+            <div class="devider"></div>
+            <button class="currency-dropdown-button" (click)="showFromCurrencyOptions()">
+                {{fromCurrency}}
+            </button>
+            <div class="icons-container">
+                <iyd-icon [name]="'chevron'"></iyd-icon>
+                <iyd-icon [name]="'chevron'"></iyd-icon>
+            </div>
+        </div>
+    </div>
+    <div class="up-down-arrow-container">
+        <iyd-icon [name]="'arrow'"></iyd-icon>
+        <iyd-icon [name]="'arrow'"></iyd-icon>
+    </div>
+    <div class="form-field">
+        <label>To</label>
+        <div class="inputs-container">
+            <input class="input-field" [ngModel]="(conversionResult$ | async)?.toFixed(2)" readonly/>
+            <div class="devider"></div>
+            <button class="currency-dropdown-button" (click)="showToCurrencyOptions()">{{toCurrency}}</button>
+            <div class="icons-container">
+                <iyd-icon [name]="'chevron'"></iyd-icon>
+                <iyd-icon [name]="'chevron'"></iyd-icon>
+            </div>
+        </div>
+    </div>
+
+    <button class="exchange-button" (click)="handleConvertCurrency()">Exchange</button>
+</div>

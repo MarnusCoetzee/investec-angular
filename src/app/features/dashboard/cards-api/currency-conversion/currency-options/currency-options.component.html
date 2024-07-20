@@ -1,0 +1,14 @@
+<div class="currency-options-container">
+    <div class="currency-top-header">
+        <span>Select the currency</span>
+        <iyd-icon [name]="'plus'" class="header-icon"></iyd-icon>
+    </div>
+
+    <div class="currency-options">
+        @for (item of results; track $index) {
+            <button class="currency-option" (click)="handleSelectedCurrency(item.code)">
+                {{item.code}}
+            </button>
+        }
+    </div>
+</div>

@@ -11,7 +11,7 @@ export const FastActionItems = [
   },
   {
     name: 'Conversion',
-    navigateTo: '/coversion',
+    navigateTo: '/dashboard/currency-convertion',
     iconName: 'currency_exchange',
   },
   {

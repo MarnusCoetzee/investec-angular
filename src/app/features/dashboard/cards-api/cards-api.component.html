@@ -10,6 +10,7 @@
       <app-ccm-table
         *ngIf="cardCurrencies$ | async as currencies"
         [ccm]="currencies"
+        [currencies]="true"
       ></app-ccm-table>
     </mat-tab>
     <mat-tab label="Merchants">
