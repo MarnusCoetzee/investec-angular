@@ -26,7 +26,7 @@ export class AuthEffects {
             console.log(user);
           }),
           map((user) => {
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/dashboard/main']);
             return AuthActions.loginSuccess({ user });
           }),
           catchError((error) =>

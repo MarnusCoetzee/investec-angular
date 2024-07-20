@@ -9,6 +9,7 @@ import { DashboardMainTilesContainerComponent } from './components/dashboard-mai
 import { DashboardFastActionsContainerComponent } from './components/dashboard-fast-actions-container/dashboard-fast-actions-container.component';
 import { DashboardUpcomingTripsComponent } from './components/dashboard-upcoming-trips/dashboard-upcoming-trips.component';
 import { BudgetComponent } from './components/budget/budget.component';
+import { ChatService } from '../../core/store/ai-chat/ai-chat.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,5 +30,11 @@ import { BudgetComponent } from './components/budget/budget.component';
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
-  constructor() {}
+  constructor(private chatService: ChatService) {}
+
+  handleTestChat() {
+    this.chatService
+      .sendMessage('What is the meaning of life?')
+      .subscribe((res) => console.log(res));
+  }
 }
