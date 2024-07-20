@@ -6,6 +6,9 @@ import { marked } from 'marked'; // Import the marked library for Markdown rende
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 marked.setOptions({
   // Customize options here
@@ -17,7 +20,7 @@ marked.setOptions({
 @Component({
   selector: 'app-ai-chatbot',
   standalone: true,
-  imports: [NgFor, NgClass, MatIconModule, MatButtonModule],
+  imports: [NgFor, NgClass, MatIconModule, MatButtonModule,MatFormFieldModule, MatInputModule,MatCardModule],
   templateUrl: './ai-chatbot.component.html',
   styleUrl: './ai-chatbot.component.scss',
 })

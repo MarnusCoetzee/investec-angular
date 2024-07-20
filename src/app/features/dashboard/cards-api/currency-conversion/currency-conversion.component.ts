@@ -6,13 +6,17 @@ import { CurrencyOptionsComponent } from "./currency-options/currency-options.co
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { CurrencyConversion } from "../../../../core/store/cards-state/card.reducer";
+import { MatCardModule } from "@angular/material/card";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'currency-conversion',
     templateUrl: 'currency-conversion.component.html',
     styleUrl: 'currency-conversion.component.scss',
     standalone: true,
-    imports: [IYDIconsComponent, CommonModule, FormsModule]
+    imports: [IYDIconsComponent, CommonModule, FormsModule,MatFormFieldModule, MatInputModule,MatCardModule]
 })
 export class CurrencyConversionComponent {
     fromCurrency: string = 'USD';
@@ -20,8 +24,12 @@ export class CurrencyConversionComponent {
     fromValue = '';
     toValue = '';
     conversionResult$ = this.cardFacade.conversionResult$;
-    constructor (private cardFacade: CardFacade, private matDialog: MatDialog) {}
+    constructor (private cardFacade: CardFacade, private matDialog: MatDialog, private router: Router) {}
 
+    handleRouteBack(): void {
+        this.router.navigate(['/dashboard/main']);
+      }
+      
     showFromCurrencyOptions() {
         const currencyOptionsRef = this.matDialog.open(CurrencyOptionsComponent);
         currencyOptionsRef.componentInstance.selectedCurrency.subscribe((fromCurrency) => {

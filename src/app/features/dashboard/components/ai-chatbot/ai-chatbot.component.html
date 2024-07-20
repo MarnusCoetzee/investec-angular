@@ -1,8 +1,6 @@
 <div class="top-bar">
   <div class="back-btn">
-    <button mat-icon-button (click)="handleRouteBack()">
-      <mat-icon>arrow_back</mat-icon>
-    </button>
+    <img src="assets/images/chevron-left.svg" alt="budget" class="back-btn" (click)="handleRouteBack() ">
   </div>
   <div class="icon">
     <mat-icon>polymer</mat-icon>
@@ -25,7 +23,7 @@
 </div>
 
 <div class="input-area">
-  <input #userInput type="text" (keyup.enter)="sendMessage()" />
+  <input #userInput type="text" (keyup.enter)="sendMessage()" placeholder="Ask me anything.." />
   <button mat-icon-button (click)="sendMessage()">
     <mat-icon>send</mat-icon>
   </button>
