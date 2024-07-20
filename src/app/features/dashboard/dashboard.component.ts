@@ -8,6 +8,7 @@ import { DashboardHeaderComponent } from './components/dashboard-header/dashboar
 import { DashboardMainTilesContainerComponent } from './components/dashboard-main-tiles-container/dashboard-main-tiles-container.component';
 import { DashboardFastActionsContainerComponent } from './components/dashboard-fast-actions-container/dashboard-fast-actions-container.component';
 import { DashboardUpcomingTripsComponent } from './components/dashboard-upcoming-trips/dashboard-upcoming-trips.component';
+import { BudgetComponent } from './components/budget/budget.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,6 +23,7 @@ import { DashboardUpcomingTripsComponent } from './components/dashboard-upcoming
     DashboardMainTilesContainerComponent,
     DashboardFastActionsContainerComponent,
     DashboardUpcomingTripsComponent,
+    BudgetComponent
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
