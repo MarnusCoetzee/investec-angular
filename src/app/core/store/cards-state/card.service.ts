@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import { CurrencyConversion } from './card.reducer';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,11 @@ export class CardService {
   getCurrencies(): Observable<any[]> {
     const url = `${this.baseUrl}/currencies`;
     return this.http.get<any[]>(url);
+  }
+
+  convertCurrency({ fromCurrency, toCurrency, fromAmount }: CurrencyConversion) {
+    const url = `https://v6.exchangerate-api.com/v6/7b8df871dbe4648310218152/pair/${fromCurrency}/${toCurrency}/${fromAmount}`;
+    return this.http.get<any>(url).pipe(map((response) => response.conversion_result));
   }
 
   getMerchants(): Observable<any[]> {

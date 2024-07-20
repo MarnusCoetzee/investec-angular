@@ -1,0 +1,22 @@
+<div class="convert-currency-dialog-container">
+    <h1>Convert currency</h1>
+    <form *ngIf="conversionFormGroup" [formGroup]="conversionFormGroup">
+        <mat-form-field appearance="fill">
+            <mat-label>From currency</mat-label>
+            <input matInput formControlName="fromCurrency" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>To currency</mat-label>
+            <input matInput formControlName="toCurrency" maxlength="12" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Amount</mat-label>
+            <input matInput formControlName="fromAmount" required />
+        </mat-form-field>
+        
+        <mat-label *ngIf="conversionResult$ | async">Conversion result: {{ conversionResult$ | async }} </mat-label>
+    </form>
+    <button mat-raised-button (click)="handleConvertCurrency()">Create beneficary</button>
+</div>

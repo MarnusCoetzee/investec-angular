@@ -27,3 +27,8 @@ export const selectCardError = createSelector(
   selectCardState,
   (state) => state.error
 );
+
+export const selectCurrencyConversion = createSelector(
+  selectCardState,
+  (state) => state.currencyConvertion
+);

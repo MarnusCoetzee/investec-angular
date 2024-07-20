@@ -1,0 +1,38 @@
+.currency-options-container {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: 35rem;
+    height: 20rem;
+}
+
+.currency-top-header {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    overflow: hidden;
+    padding: .5rem;
+}
+
+.header-message {
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-left: auto;
+}
+
+.header-icon {
+    transform: rotate(45deg);
+    margin-left: auto;
+}
+
+.currency-options {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    overflow: auto;
+    max-height: 15rem;
+}
+
+.currency-option {
+    
+}
