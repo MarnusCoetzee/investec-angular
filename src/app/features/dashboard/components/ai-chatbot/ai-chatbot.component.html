@@ -1,3 +1,16 @@
+<div class="top-bar">
+  <div class="back-btn">
+    <button mat-icon-button (click)="handleRouteBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+  <div class="icon">
+    <mat-icon>polymer</mat-icon>
+    Assistant
+  </div>
+  <div class="empty-space"></div>
+</div>
+
 <div class="chat-container" #scrollContainer>
   <div
     *ngFor="let message of messages"

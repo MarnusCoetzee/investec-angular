@@ -4,6 +4,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { ChatService } from '../../../../core/store/ai-chat/ai-chat.service';
 import { marked } from 'marked'; // Import the marked library for Markdown rendering
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 
 marked.setOptions({
   // Customize options here
@@ -15,7 +17,7 @@ marked.setOptions({
 @Component({
   selector: 'app-ai-chatbot',
   standalone: true,
-  imports: [NgFor, NgClass, MatIconModule],
+  imports: [NgFor, NgClass, MatIconModule, MatButtonModule],
   templateUrl: './ai-chatbot.component.html',
   styleUrl: './ai-chatbot.component.scss',
 })
@@ -26,7 +28,8 @@ export class AiChatbotComponent implements OnInit {
 
   constructor(
     private chatService: ChatService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private router: Router
   ) {}
   ngOnInit() {
     this.messages.push({ sender: 'bot', text: 'Hello! How can I help you?' });
@@ -61,5 +64,9 @@ export class AiChatbotComponent implements OnInit {
       this.scrollContainer.nativeElement.scrollTop =
         this.scrollContainer.nativeElement.scrollHeight;
     }, 100);
+  }
+
+  handleRouteBack(): void {
+    this.router.navigate(['/dashboard/main']);
   }
 }
