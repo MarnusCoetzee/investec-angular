@@ -17,4 +17,18 @@ export const routes: Routes = [
       ),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'dashboard/view-trip/:id',
+    loadComponent: () =>
+      import(
+        './features/dashboard/components/dashboard-upcoming-trips/view-trip/view-trip.component'
+      ).then((m) => m.ViewTripComponent),
+  },
+  {
+    path: 'dashboard/edit-trip/:id',
+    loadComponent: () =>
+      import(
+        './features/dashboard/components/dashboard-upcoming-trips/edit-trip/edit-trip.component'
+      ).then((m) => m.EditTripComponent),
+  },
 ];

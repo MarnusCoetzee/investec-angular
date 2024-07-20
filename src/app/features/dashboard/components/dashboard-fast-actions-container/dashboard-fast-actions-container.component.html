@@ -1,0 +1,10 @@
+<div class="fast-actions-container">
+  <div class="fast-actions-container__header">Fast Actions</div>
+  <div class="fast-action-items">
+    <app-fast-action-item
+      *ngFor="let actionItem of actionItems"
+      [actionItem]="actionItem"
+      (actionItemClicked)="handleActionItemClicked($event)"
+    ></app-fast-action-item>
+  </div>
+</div>

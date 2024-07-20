@@ -1,0 +1,35 @@
+.total-expense-tile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 12rem;
+  height: 13rem;
+  background-color: #00579c;
+  border-radius: 16px;
+  mat-icon {
+    color: white;
+  }
+
+  .tile-heading-img {
+    padding: 1rem;
+  }
+
+  .heading {
+    padding-left: 1rem;
+    font-size: 1.25rem;
+    color: white;
+  }
+
+  .expenses-amount {
+    padding-left: 1rem;
+    font-size: 1.375rem;
+    color: white;
+  }
+
+  .trips-amount {
+    padding-left: 1rem;
+    font-size: 1rem;
+    color: white;
+  }
+}
