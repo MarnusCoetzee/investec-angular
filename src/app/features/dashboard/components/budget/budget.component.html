@@ -1,0 +1,48 @@
+<mat-card>
+    <mat-card-title class="text-center mt-5 mb-4 col-md-12"> <img src="assets/images/chevron-left.svg" alt="budget" class="back-btn"> New Budget</mat-card-title>
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()" class="">
+        <div class="col-md-12">
+          <mat-label>Budget Name</mat-label>
+          <mat-form-field>
+           <img src="assets/images/edit.svg" alt="budget" class="budget-icon">
+            <input matInput placeholder="Budget Name" formControlName="budgetName">
+          </mat-form-field>
+        </div>
+    
+        <div class="col-md-12">
+          <mat-label>Category</mat-label>
+          <mat-form-field>
+            <img src="assets/images/cat.svg" alt="budget" class="budget-icon">
+            <input matInput placeholder="Category" formControlName="category">
+          </mat-form-field>
+        </div>
+  
+        <div class="col-md-12">
+          <mat-label>Total Budget Amount</mat-label>
+          <mat-form-field>
+            <img src="assets/images/dollar-sign.svg" alt="budget" class="budget-icon">
+            <input matInput placeholder="Total Budget Amount" formControlName="totalBudgetAmount">
+          </mat-form-field>
+        </div>
+  
+        <div class="col-md-12">
+          <mat-label>Duration</mat-label>
+          <mat-form-field>
+            <img src="assets/images/cal.svg" alt="budget" class="budget-icon">
+            <input matInput placeholder="Duration" formControlName="duration">
+          </mat-form-field>
+        </div>
+  
+        <div class="col-md-12">
+          <mat-label>Monthly Contribution</mat-label>
+          <mat-form-field>
+            <img src="assets/images/dollar-sign.svg" alt="budget" class="budget-icon">
+            <input matInput placeholder="Monthly Contribution" formControlName="monthlyContribution">
+          </mat-form-field>
+        </div>
+        <button mat-flat-button>Create New Budget</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  
