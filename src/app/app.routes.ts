@@ -31,4 +31,11 @@ export const routes: Routes = [
         './features/dashboard/components/dashboard-upcoming-trips/edit-trip/edit-trip.component'
       ).then((m) => m.EditTripComponent),
   },
+  {
+    path: 'dashboard/add-trip',
+    loadComponent: () =>
+      import('./features/dashboard/create-trip/create-trip.component').then(
+        (m) => m.CreateTripComponent
+      ),
+  },
 ];
