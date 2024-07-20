@@ -22,8 +22,11 @@ export class AuthEffects {
       tap(() => this.loadingFacade.startLoading()),
       switchMap((action) =>
         this.authService.login(action.username, action.password).pipe(
+          tap((user) => {
+            console.log(user);
+          }),
           map((user) => {
-            this.router.navigate(['/dashboard/main']);
+            this.router.navigate(['/dashboard']);
             return AuthActions.loginSuccess({ user });
           }),
           catchError((error) =>

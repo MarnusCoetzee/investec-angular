@@ -1,5 +1,4 @@
-@if(!showLogIn) {
-<div id="landing-page">
+<div id="landing-page" *ngIf="!showLogIn">
   <div class="flex flex-col w-svw h-svh gap-10 p-10 justify-center">
     <div class="w-full flex justify-center">
       <img
@@ -18,14 +17,14 @@
 
     <button
       class="bg-blue text-[white] text-lg h-10 font-normal"
-      (click)="switchToLoginPage()"
+      (click)="handleLogin()"
     >
       Get started
     </button>
   </div>
 </div>
-} @else {
-<div class="flex flex-col w-svw h-svh gap-8 p-10">
+
+<div class="flex flex-col w-svw h-svh gap-8 p-10" *ngIf="!showLogIn">
   <div class="w-full flex justify-center">
     <img
       class="w-3/5 p-5"
@@ -64,7 +63,7 @@
     </button>
     <button
       class="flex flex-row gap-1 outline outline-grey h-10 p-2 justify-center font-semibold"
-      routerLink="."
+      (click)="handleLogin()"
     >
       <img class="h-5" src="../../../assets/google.ico" alt="" />
       <div>Sign up with Google</div>
@@ -76,5 +75,3 @@
     <a class="text-blue font-bold" href="">Sign Up</a>
   </p>
 </div>
-
-}
