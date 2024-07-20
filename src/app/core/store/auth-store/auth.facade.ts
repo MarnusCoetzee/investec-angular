@@ -9,7 +9,9 @@ import { AuthState } from '../../interfaces/auth/auth.state';
   providedIn: 'root',
 })
 export class AuthFacade {
-  constructor(private store: Store<AuthState>) {}
+  user$ = this.store.select((state) => state.auth.user);
+
+  constructor(private store: Store<any>) {}
 
   login(username: string, password: string) {
     this.store.dispatch(AuthActions.loginStart({ username, password }));

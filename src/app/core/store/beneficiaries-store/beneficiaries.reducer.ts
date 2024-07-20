@@ -40,5 +40,14 @@ export const beneficiaryReducer = createReducer(
     ...state,
     error,
     loading: false,
-  }))
+  })),
+  on(BeneficiaryActions.createBeneficiary,
+    (state) => ({...state, loading: true})
+  ),
+  on(BeneficiaryActions.createBeneficiarySuccess,
+    (state, r) => { return { ...state, beneficiaries: [...state.beneficiaries, r], loading: false }}
+  ),
+  on(BeneficiaryActions.createBeneficiaryFailure,
+    (state) => ({ ...state, loading: false })
+  )
 );

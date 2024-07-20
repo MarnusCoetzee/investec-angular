@@ -1,6 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 import {
+  BeneficiaryData,
   BeneficiaryPaymentItem,
+  CreatedBeneficiaryResponse,
   PayBeneficiaryRequest,
 } from './beneficiaries.service';
 
@@ -28,4 +30,18 @@ export const payBeneficiarySuccess = createAction(
 export const payBeneficiaryFailure = createAction(
   '[Beneficiaries] Pay Beneficiary Failure',
   props<{ error: any }>()
+);
+
+export const createBeneficiary = createAction(
+  '[Beneficiaries] Create beneficiary',
+  props<{ beneficiaryData: BeneficiaryData, token: string }>()
+);
+
+export const createBeneficiarySuccess = createAction(
+  '[Beneficiaries] Create beneficiary Success',
+  props<{ createdBeneficiary: CreatedBeneficiaryResponse }>()
+);
+
+export const createBeneficiaryFailure = createAction(
+  '[Beneficiaries] Create beneficiary Failure'
 );

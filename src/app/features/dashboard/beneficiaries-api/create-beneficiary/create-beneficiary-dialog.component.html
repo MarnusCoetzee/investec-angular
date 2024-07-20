@@ -1,0 +1,40 @@
+<div class="create-ben-dialog-container">
+    <h1>Create beneficary</h1>
+    <form *ngIf="createBeneficiaryFormGroup" [formGroup]="createBeneficiaryFormGroup">
+        <mat-form-field appearance="fill">
+            <mat-label>Beneficary name</mat-label>
+            <input matInput formControlName="beneficiaryName" required />
+            <mat-error *ngIf="beneficaryNameRequired">
+                Beneficary name is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Cell number</mat-label>
+            <input matInput formControlName="cellNo" maxlength="12" required />
+            <mat-error *ngIf="cellNoRequired">
+                Cell number is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="emailAddress" required />
+            <mat-error *ngIf="emailRequired">
+                Email is required
+            </mat-error>
+            <mat-error *ngIf="emailInvalid">
+                Email is invalid
+            </mat-error>
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Reference name</mat-label>
+            <input matInput formControlName="referenceName" required />
+            <mat-error *ngIf="referenceNameRequired">
+                Reference name is required
+            </mat-error>
+        </mat-form-field>
+    </form>
+    <button mat-raised-button (click)="handleCreateBeneficiary()">Create beneficary</button>
+</div>

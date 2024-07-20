@@ -2,13 +2,20 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
+export interface User {
+  access_token: string;
+  expires_in: string;
+  scope: string;
+  token_type: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  login(username: string, password: string): Observable<any> {
+  login(username: string, password: string): Observable<User> {
     const url = 'http://localhost:3000/identity/v2/oauth2/token';
     const headers = new HttpHeaders({
       'x-api-key':
@@ -22,6 +29,6 @@ export class AuthService {
       fromString: 'grant_type=client_credentials',
     });
 
-    return this.http.post(url, body.toString(), { headers });
+    return this.http.post<User>(url, body.toString(), { headers });
   }
 }
