@@ -1,5 +1,10 @@
 <div class="conversion-container">
-    <h1 class="text-xl ">Currency conversion</h1>
+    <div class="conversion-header">
+        <button (click)="handleBack()">
+            <iyd-icon [name]="'chevron'"></iyd-icon>
+        </button>
+        <h1 class="text-xl ">Conversion</h1>
+    </div>
     <div class="form-field">
         <label>From</label>
         <div class="inputs-container">
