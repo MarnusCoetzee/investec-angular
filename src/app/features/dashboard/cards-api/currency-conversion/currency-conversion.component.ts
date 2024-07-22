@@ -5,6 +5,9 @@ import { MatDialog } from "@angular/material/dialog";
 import { CurrencyOptionsComponent } from "./currency-options/currency-options.component";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
+import { MatCardModule } from "@angular/material/card";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
 import { Router } from "@angular/router";
 
 @Component({
@@ -12,7 +15,7 @@ import { Router } from "@angular/router";
     templateUrl: 'currency-conversion.component.html',
     styleUrl: 'currency-conversion.component.scss',
     standalone: true,
-    imports: [IYDIconsComponent, CommonModule, FormsModule]
+    imports: [IYDIconsComponent, CommonModule, FormsModule,MatFormFieldModule, MatInputModule,MatCardModule]
 })
 export class CurrencyConversionComponent implements OnInit {
     fromCurrency: string = 'USD';
@@ -26,6 +29,10 @@ export class CurrencyConversionComponent implements OnInit {
         this.cardFacade.loadCardData();
     }
 
+    handleRouteBack(): void {
+        this.router.navigate(['/dashboard/main']);
+      }
+      
     showFromCurrencyOptions() {
         const currencyOptionsRef = this.matDialog.open(CurrencyOptionsComponent);
         currencyOptionsRef.componentInstance.selectedCurrency.subscribe((fromCurrency) => {
