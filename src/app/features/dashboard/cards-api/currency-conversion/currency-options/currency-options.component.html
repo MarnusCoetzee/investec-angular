@@ -5,7 +5,7 @@
     </div>
 
     <div class="currency-options">
-        @for (item of results; track $index) {
+        @for (item of cardCurrencies$ | async; track $index) {
             <button class="currency-option" (click)="handleSelectedCurrency(item.code)">
                 {{item.code}}
             </button>

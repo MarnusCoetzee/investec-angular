@@ -22,7 +22,7 @@ export class CardService {
   }
 
   convertCurrency({ fromCurrency, toCurrency, fromAmount }: CurrencyConversion) {
-    const url = `https://v6.exchangerate-api.com/v6/7b8df871dbe4648310218152/pair/${fromCurrency}/${toCurrency}/${fromAmount}`;
+    const url = `https://v6.exchangerate-api.com/v6/YOUR_API_KEY/pair/${fromCurrency}/${toCurrency}/${fromAmount}`;
     return this.http.get<any>(url).pipe(map((response) => response.conversion_result));
   }
 
