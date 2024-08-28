@@ -1,48 +1,44 @@
-<div class="top-bar">
-    <div class="back-btn">
-      <img src="assets/images/chevron-left.svg" alt="budget" class="back-btn" (click)="handleRouteBack() ">
+<div class="conversion-wrapper">
+    <div class="top-bar">
+        <button class="back-btn" (click)="handleRouteBack()">
+            <mat-icon class="text-2xl">chevron_left</mat-icon>
+        </button>
+        <h1 class="title">Conversion</h1>
     </div>
-    <h1 class="text-xl ">Currency conversion</h1>
-    <div class="empty-space"></div>
-  </div>
 
-<div class="conversion-container">
+    <img class="mt-20" src="assets/images/conversion.svg">
 
-    <img src="assets/images/conversion.svg" alt="budget">
-    <div class="form-field">
-
-
-
-        <label>From</label>
-        <div class="inputs-container">
-            <input class="input-field" [(ngModel)]="fromValue" />
-            <div class="devider"></div>
-            <button class="currency-dropdown-button" (click)="showFromCurrencyOptions()">
-                {{fromCurrency}}
-            </button>
-            <div class="icons-container">
-                <iyd-icon [name]="'chevron'"></iyd-icon>
-                <iyd-icon [name]="'chevron'"></iyd-icon>
+    <form class="conversion-form">
+        <div class="inputs">
+            <label>From</label>
+            <div class="amount-currency-container">
+                <input type="text" class="input-field" />
+                <button class="currency-btn">
+                    USD
+                    <mat-icon class="currency-btn-icon">unfold_more</mat-icon>
+                </button>
             </div>
         </div>
-    </div>
-    <div class="up-down-arrow-container">
-        <iyd-icon [name]="'arrow'"></iyd-icon>
-        <iyd-icon [name]="'arrow'"></iyd-icon>
-    </div>
-    <div class="form-field">
-        <label>To</label>
-        <div class="inputs-container">
-            <input class="input-field" [ngModel]="(conversionResult$ | async)?.toFixed(2)" readonly/>
-            <div class="devider"></div>
-            <button class="currency-dropdown-button" (click)="showToCurrencyOptions()">{{toCurrency}}</button>
-            <div class="icons-container">
-                <iyd-icon [name]="'chevron'"></iyd-icon>
-                <iyd-icon [name]="'chevron'"></iyd-icon>
+        <div class="exchange-icons">
+            <mat-icon>arrow_upward</mat-icon>
+            <mat-icon>arrow_downward</mat-icon>
+        </div>
+        <div class="inputs">
+            <label>To</label>
+            <div class="amount-currency-container">
+                <input type="text" class="input-field" />
+                <button class="currency-btn">
+                    KRM
+                    <mat-icon class="currency-btn-icon">unfold_more</mat-icon>
+                </button>
             </div>
         </div>
-    </div>
-
-    <button class="exchange-button" (click)="handleConvertCurrency()">Exchange</button>
+        <div class="currency-rate-container">
+            <span>Currency rate</span>
+            <span>1 USD = 1122KRM</span>
+        </div>
+        <button class="exchange-btn">
+            Exchange
+        </button>
+    </form>
 </div>
-
