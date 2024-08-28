@@ -4,6 +4,7 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import * as CardActions from './card.actions';
 import { CardService } from './card.service';
+import { ConvertCurrencyResult } from '../../interfaces/cards-state/cards-state.interface';
 
 @Injectable()
 export class CardEffects {
@@ -56,12 +57,18 @@ export class CardEffects {
   convertCurrency$ = createEffect(() => 
     this.actions$.pipe(
       ofType(CardActions.convertCurrency),
-      switchMap(({currencyConvertion}) => 
-        this.cardService.convertCurrency(currencyConvertion).pipe(
-          map((conversionResult) => { console.log('hmmm...',conversionResult); return CardActions.convertCurrencySuccess({conversionResult})})
+      switchMap(({ fromCurrency, toCurrency, fromAmount  }) => 
+        this.cardService.convertCurrency(fromCurrency, toCurrency, fromAmount).pipe(
+          map((response) => {
+            const convertCurrencyResult: ConvertCurrencyResult = {
+              conversionRate: response.conversion_rate,
+              conversionResult: response.conversion_result
+            }
+
+            return CardActions.convertCurrencySuccess({ convertCurrencyResult });
+          })
         )
       )
     )
-  )
-
+  );
 }

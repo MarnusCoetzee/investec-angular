@@ -1,27 +1,29 @@
 import { createReducer, on } from '@ngrx/store';
 import * as CardActions from './card.actions';
+import { ConvertCurrencyResult, Currency } from '../../interfaces/cards-state/cards-state.interface';
 
 export interface CurrencyConversion {
   fromCurrency: string;
   toCurrency: string;
   fromAmount: number;
   toAmount: number;
+  rate: number;
 }
 
 export interface CardState {
   countries: any[];
-  currencies: any[];
+  currencies: Currency[];
   merchants: any[];
   loading: boolean;
   error: string | null;
-  currencyConvertion: CurrencyConversion | null;
+  convertCurrencyResult: ConvertCurrencyResult | null;
 }
 
 export const initialState: CardState = {
   countries: [],
   currencies: [],
   merchants: [],
-  currencyConvertion: null,
+  convertCurrencyResult: null,
   loading: false,
   error: null,
 };
@@ -40,11 +42,11 @@ export const cardReducer = createReducer(
     loading: false,
   })),
   on(CardActions.getAllCurrencies, (state) => ({ ...state, loading: true })),
-  on(CardActions.getAllCurrenciesSuccess, (state, { currencies }) => ({
+  on(CardActions.getAllCurrenciesSuccess, (state, { currencies }) => {console.log(currencies); return {
     ...state,
-    currencies,
+    currencies: currencies.data?.result,
     loading: false,
-  })),
+  }}),
   on(CardActions.getAllCurrenciesFailure, (state, { error }) => ({
     ...state,
     error,
@@ -61,12 +63,8 @@ export const cardReducer = createReducer(
     error,
     loading: false,
   })),
-  on(CardActions.convertCurrency, (state, { currencyConvertion }) => ({
+  on(CardActions.convertCurrencySuccess, (state, { convertCurrencyResult } ) => ({
     ...state,
-    currencyConvertion: currencyConvertion
-  })),
-  on(CardActions.convertCurrencySuccess, (state, {conversionResult} ) => { console.log('Got ', conversionResult); return {
-    ...state,
-    currencyConvertion: { ...state.currencyConvertion!, toAmount: conversionResult }
-  }})
+    convertCurrencyResult
+  }))
 );

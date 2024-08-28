@@ -1,6 +1,6 @@
 <div class="conversion-wrapper">
     <div class="top-bar">
-        <button class="back-btn" (click)="handleRouteBack()">
+        <button class="back-btn" (click)="handleBack()">
             <mat-icon class="text-2xl">chevron_left</mat-icon>
         </button>
         <h1 class="title">Conversion</h1>
@@ -8,16 +8,17 @@
 
     <img class="mt-20" src="assets/images/conversion.svg">
 
-    <form class="conversion-form">
+    <form *ngIf="conversionFormGroup" class="conversion-form" [formGroup]="conversionFormGroup">
         <div class="inputs">
             <label>From</label>
             <div class="amount-currency-container">
-                <input type="text" class="input-field" />
-                <button class="currency-btn">
-                    USD
+                <input type="text" class="input-field" formControlName="fromCurrencyAmount" />
+                <button class="currency-btn" (click)="showFromCurrencyOptions()">
+                    {{ fromCurrency?.code }}
                     <mat-icon class="currency-btn-icon">unfold_more</mat-icon>
                 </button>
             </div>
+            <label *ngIf="fromAmountInvalid" class="field-error">Please enter valid amount</label>
         </div>
         <div class="exchange-icons">
             <mat-icon>arrow_upward</mat-icon>
@@ -26,18 +27,19 @@
         <div class="inputs">
             <label>To</label>
             <div class="amount-currency-container">
-                <input type="text" class="input-field" />
-                <button class="currency-btn">
-                    KRM
+                <input type="text" class="input-field" formControlName="toCurrencyAmount" readonly/>
+                <button class="currency-btn" (click)="showToCurrencyOptions()">
+                    {{ toCurrency?.code }}
                     <mat-icon class="currency-btn-icon">unfold_more</mat-icon>
                 </button>
             </div>
+            <label *ngIf="toAmountInvalid" class="field-error">Please enter valid amount</label>
         </div>
         <div class="currency-rate-container">
             <span>Currency rate</span>
-            <span>1 USD = 1122KRM</span>
+            <span *ngIf="conversionRate">1 {{ fromCurrency?.code }} = {{ conversionRate }} {{ toCurrency?.code }}</span>
         </div>
-        <button class="exchange-btn">
+        <button class="exchange-btn" (click)="convertCurrency()">
             Exchange
         </button>
     </form>

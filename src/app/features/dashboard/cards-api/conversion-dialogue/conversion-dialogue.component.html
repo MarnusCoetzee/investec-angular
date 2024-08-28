@@ -16,7 +16,7 @@
             <input matInput formControlName="fromAmount" required />
         </mat-form-field>
         
-        <mat-label *ngIf="conversionResult$ | async">Conversion result: {{ conversionResult$ | async }} </mat-label>
+        <!-- <mat-label *ngIf="conversionResult$ | async">Conversion result: {{ conversionResult$ | async }} </mat-label> -->
     </form>
     <button mat-raised-button (click)="handleConvertCurrency()">Create beneficary</button>
 </div>

@@ -68,9 +68,12 @@
 label {
     font-size: .75rem;
     font-weight: 500;
-    color: #979797
-}
+    color: #979797;
 
+    &.field-error {
+        color: #FF4267;
+    }
+}
 
 .exchange-icons {
     display: flex;
