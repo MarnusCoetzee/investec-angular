@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as CardActions from './card.actions';
-import { CurrencyConversion } from './card.reducer';
 
 @Injectable({
   providedIn: 'root',
@@ -10,9 +9,11 @@ export class CardFacade {
   cardCountries$ = this.store.select(
     (state) => state.card.countries.data?.result
   );
+
   cardCurrencies$ = this.store.select(
     (state) => state.card.currencies
   );
+
   cardMerchants$ = this.store.select(
     (state) => state.card.merchants.data?.result
   );
@@ -20,6 +21,14 @@ export class CardFacade {
   convertCurrencyResult$ = this.store.select(
     (state) => state.card.convertCurrencyResult
   );
+
+  loading$ = this.store.select(
+    (state) => state.card.loading
+  );
+
+  error$ = this.store.select(
+    (state) => state.card.error
+  )
 
   constructor(private store: Store<any>) {}
 

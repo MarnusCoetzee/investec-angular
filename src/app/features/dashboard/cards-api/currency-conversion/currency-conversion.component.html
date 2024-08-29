@@ -1,5 +1,8 @@
 <div class="conversion-wrapper">
     <div class="conversion-container">
+        <div *ngIf="loading$ | async" class="progress-bar-container">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
         <div class="top-bar">
             <button class="back-btn" (click)="handleBack()">
                 <mat-icon class="text-2xl">chevron_left</mat-icon>
@@ -40,6 +43,7 @@
                 <span>Currency rate</span>
                 <span *ngIf="conversionRate">1 {{ fromCurrency?.code }} = {{ conversionRate }} {{ toCurrency?.code }}</span>
             </div>
+            <label class="field-error">{{ error$ | async }}</label>
             <button class="exchange-btn" (click)="convertCurrency()">
                 Exchange
             </button>

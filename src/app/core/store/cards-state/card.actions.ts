@@ -19,7 +19,7 @@ export const getAllCurrenciesSuccess = createAction(
 );
 export const getAllCurrenciesFailure = createAction(
   '[Cards] Get All Currencies Failure',
-  props<{ error: any }>()
+  props<{ error: string }>()
 );
 
 export const getAllMerchants = createAction('[Cards] Get All merchants');
@@ -42,7 +42,7 @@ export const convertCurrencySuccess = createAction(
   props<{convertCurrencyResult: ConvertCurrencyResult}>()
 );
 
-export const convertCurrencyFailor = createAction(
-  '[Cards] Convert currency Failor',
-  props<{ error: any }>()
+export const convertCurrencyFailure = createAction(
+  '[Cards] Convert currency Failure',
+  props<{ error: string }>()
 );

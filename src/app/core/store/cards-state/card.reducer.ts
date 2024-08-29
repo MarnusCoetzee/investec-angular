@@ -63,8 +63,19 @@ export const cardReducer = createReducer(
     error,
     loading: false,
   })),
+  on(CardActions.convertCurrency, (state) => ({
+    ...state,
+    loading: true
+  })),
   on(CardActions.convertCurrencySuccess, (state, { convertCurrencyResult } ) => ({
     ...state,
-    convertCurrencyResult
+    loading: false,
+    error: null,
+    convertCurrencyResult,
+  })),
+  on(CardActions.convertCurrencyFailure, (state, { error }) => ({
+    ...state,
+    error,
+    loading: false
   }))
 );

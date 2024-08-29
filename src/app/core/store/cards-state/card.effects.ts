@@ -32,8 +32,8 @@ export class CardEffects {
           map((currencies) =>
             CardActions.getAllCurrenciesSuccess({ currencies })
           ),
-          catchError((error) =>
-            of(CardActions.getAllCurrenciesFailure({ error }))
+          catchError(() =>
+            of(CardActions.getAllCurrenciesFailure({ error: 'Failed to get currencies, please refresh' }))
           )
         )
       )
@@ -66,7 +66,8 @@ export class CardEffects {
             }
 
             return CardActions.convertCurrencySuccess({ convertCurrencyResult });
-          })
+          }),
+          catchError(() => of(CardActions.convertCurrencyFailure({ error: 'Failed to convert currency' })))
         )
       )
     )

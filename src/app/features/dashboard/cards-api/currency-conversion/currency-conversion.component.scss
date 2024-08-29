@@ -11,6 +11,13 @@
     max-width: 45rem;
 }
 
+.progress-bar-container {
+    position: fixed;
+    top: .25rem;
+    width: 100%;
+    left: 0;
+}
+
 .top-bar {
     display: flex;
     align-items: center;

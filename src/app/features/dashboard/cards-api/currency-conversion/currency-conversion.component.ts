@@ -11,20 +11,32 @@ import { Router } from "@angular/router";
 import { MatIcon } from "@angular/material/icon";
 import { first, Subject, takeUntil, tap } from "rxjs";
 import { Currency } from "../../../../core/interfaces/cards-state/cards-state.interface";
+import { MatProgressBar } from "@angular/material/progress-bar";
 
 @Component({
     selector: 'currency-conversion',
     templateUrl: 'currency-conversion.component.html',
     styleUrl: 'currency-conversion.component.scss',
     standalone: true,
-    imports: [MatIcon, CommonModule, FormsModule, MatFormFieldModule, MatInputModule, MatCardModule, ReactiveFormsModule]
+    imports: [
+        MatIcon, 
+        CommonModule, 
+        FormsModule, 
+        MatFormFieldModule, 
+        MatInputModule, 
+        MatCardModule, 
+        ReactiveFormsModule,
+        MatProgressBar
+    ]
 })
 export class CurrencyConversionComponent implements OnInit, OnDestroy {
     conversionFormGroup!: FormGroup;
     fromCurrency: Currency | null = null;
     toCurrency: Currency | null = null;
     conversionRate = 0;
-    
+    loading$ = this.cardFacade.loading$;
+    error$ = this.cardFacade.error$;
+
     private currencies: Currency[] = [];
     private getAllCurrencies$ = new Subject();
     private convertCurrency$ = new Subject();
