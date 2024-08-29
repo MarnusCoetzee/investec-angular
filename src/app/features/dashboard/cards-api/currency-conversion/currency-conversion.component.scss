@@ -1,7 +1,14 @@
 .conversion-wrapper {
     display: flex;
+    justify-content: center;
+    width: 100vw;
+}
+
+.conversion-container {
+    display: flex;
     flex-direction: column;
     padding: 1rem 2rem;
+    max-width: 45rem;
 }
 
 .top-bar {
