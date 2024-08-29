@@ -1,13 +1,16 @@
 <div class="currency-options-container">
     <div class="currency-top-header">
         <span>Select the currency</span>
-        <iyd-icon [name]="'plus'" class="header-icon"></iyd-icon>
+        <button (click)="closeModal()">
+            <mat-icon>close</mat-icon>
+        </button>
     </div>
 
     <div class="currency-options">
-        @for (item of cardCurrencies$ | async; track $index) {
-            <button class="currency-option" (click)="handleSelectedCurrency(item.code)">
-                {{item.code}}
+        @for (currency of currencies; track selectedCurrency?.code) {
+            <button class="currency-option" [ngClass]="{ selected: isSelected(currency) }" (click)="selectCurrency(currency)">
+                {{ currency.code }} ( {{ currency.name }} )
+                <mat-icon *ngIf="isSelected(currency)">check</mat-icon>
             </button>
         }
     </div>

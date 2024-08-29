@@ -1,48 +1,52 @@
-<div class="top-bar">
-    <div class="back-btn">
-      <img src="assets/images/chevron-left.svg" alt="budget" class="back-btn" (click)="handleRouteBack() ">
-    </div>
-    <h1 class="text-xl ">Currency conversion</h1>
-    <div class="empty-space"></div>
-  </div>
-
-<div class="conversion-container">
-
-    <img src="assets/images/conversion.svg" alt="budget">
-    <div class="form-field">
-
-
-
-        <label>From</label>
-        <div class="inputs-container">
-            <input class="input-field" [(ngModel)]="fromValue" />
-            <div class="devider"></div>
-            <button class="currency-dropdown-button" (click)="showFromCurrencyOptions()">
-                {{fromCurrency}}
+<div class="conversion-wrapper">
+    <div class="conversion-container">
+        <div *ngIf="loading$ | async" class="progress-bar-container">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        <div class="top-bar">
+            <button class="back-btn" (click)="handleBack()">
+                <mat-icon class="text-2xl">chevron_left</mat-icon>
             </button>
-            <div class="icons-container">
-                <iyd-icon [name]="'chevron'"></iyd-icon>
-                <iyd-icon [name]="'chevron'"></iyd-icon>
-            </div>
+            <h1 class="title">Conversion</h1>
         </div>
-    </div>
-    <div class="up-down-arrow-container">
-        <iyd-icon [name]="'arrow'"></iyd-icon>
-        <iyd-icon [name]="'arrow'"></iyd-icon>
-    </div>
-    <div class="form-field">
-        <label>To</label>
-        <div class="inputs-container">
-            <input class="input-field" [ngModel]="(conversionResult$ | async)?.toFixed(2)" readonly/>
-            <div class="devider"></div>
-            <button class="currency-dropdown-button" (click)="showToCurrencyOptions()">{{toCurrency}}</button>
-            <div class="icons-container">
-                <iyd-icon [name]="'chevron'"></iyd-icon>
-                <iyd-icon [name]="'chevron'"></iyd-icon>
+    
+        <img class="mt-20" src="assets/images/conversion.svg">
+    
+        <form *ngIf="conversionFormGroup" class="conversion-form" [formGroup]="conversionFormGroup">
+            <div class="inputs">
+                <label>From</label>
+                <div class="amount-currency-container">
+                    <input type="text" class="input-field" formControlName="fromCurrencyAmount" />
+                    <button class="currency-btn" (click)="showFromCurrencyOptions()">
+                        {{ fromCurrency?.code }}
+                        <mat-icon class="currency-btn-icon">unfold_more</mat-icon>
+                    </button>
+                </div>
+                <label *ngIf="fromAmountInvalid" class="field-error">Please enter valid amount</label>
             </div>
-        </div>
+            <div class="exchange-icons">
+                <mat-icon>arrow_upward</mat-icon>
+                <mat-icon>arrow_downward</mat-icon>
+            </div>
+            <div class="inputs">
+                <label>To</label>
+                <div class="amount-currency-container">
+                    <input type="text" class="input-field" formControlName="toCurrencyAmount" readonly/>
+                    <button class="currency-btn" (click)="showToCurrencyOptions()">
+                        {{ toCurrency?.code }}
+                        <mat-icon class="currency-btn-icon">unfold_more</mat-icon>
+                    </button>
+                </div>
+                <label *ngIf="toAmountInvalid" class="field-error">Please enter valid amount</label>
+            </div>
+            <div class="currency-rate-container">
+                <span>Currency rate</span>
+                <span *ngIf="conversionRate">1 {{ fromCurrency?.code }} = {{ conversionRate }} {{ toCurrency?.code }}</span>
+            </div>
+            <label class="field-error">{{ error$ | async }}</label>
+            <button class="exchange-btn" (click)="convertCurrency()">
+                Exchange
+            </button>
+        </form>
     </div>
-
-    <button class="exchange-button" (click)="handleConvertCurrency()">Exchange</button>
 </div>
-

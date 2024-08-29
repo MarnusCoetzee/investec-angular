@@ -1,10 +1,9 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnInit, Output } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
-import { MatFormField, MatFormFieldModule } from "@angular/material/form-field";
+import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
-import { Store } from "@ngrx/store";
 import { CardFacade } from "../../../../core/store/cards-state/card.facade";
 
 @Component({
@@ -16,7 +15,7 @@ import { CardFacade } from "../../../../core/store/cards-state/card.facade";
 })
 export class ConversionDialogue implements OnInit {
     conversionFormGroup!:FormGroup;
-    conversionResult$ = this.cardFacade.conversionResult$;
+    // conversionResult$ = this.cardFacade.conversionResult$;
 
     constructor (private cardFacade: CardFacade) {}
 
@@ -27,10 +26,10 @@ export class ConversionDialogue implements OnInit {
             fromAmount: new FormControl('')
         });
 
-        this.conversionResult$.subscribe((v) => console.log('Check this ', v))
+        // this.conversionResult$.subscribe((v) => console.log('Check this ', v))
     }
 
     handleConvertCurrency() {
-        this.cardFacade.convertCurrency(this.conversionFormGroup.value);
+        // this.cardFacade.convertCurrency(this.conversionFormGroup.value);
     }
 }

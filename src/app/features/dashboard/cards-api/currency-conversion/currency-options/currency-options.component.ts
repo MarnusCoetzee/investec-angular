@@ -1,22 +1,30 @@
 import { Component, EventEmitter, Output } from "@angular/core";
-import { IYDIconsComponent } from "iyd-icons";
-import { CardFacade } from "../../../../../core/store/cards-state/card.facade";
 import { CommonModule } from "@angular/common";
+import { Currency } from "../../../../../core/interfaces/cards-state/cards-state.interface";
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
     selector: 'currency-options',
     templateUrl: 'currency-options.component.html',
     styleUrl: 'currency-options.component.scss',
     standalone: true,
-    imports: [IYDIconsComponent, CommonModule]
+    imports: [CommonModule, MatIcon]
 })
 export class CurrencyOptionsComponent {
-    cardCurrencies$ = this.cardFacade.cardCurrencies$;
-    @Output() selectedCurrency = new EventEmitter<string>();
+    currencies: Currency[] = [];
+    selectedCurrency: Currency | null = null;
+    @Output() onCloseModal = new EventEmitter<Currency>();
 
-    constructor (private cardFacade: CardFacade) {}
+    isSelected(currency: Currency) {
+        return currency.code === this.selectedCurrency?.code;
+    }
 
-    handleSelectedCurrency(currencyCode: string) {
-        this.selectedCurrency.emit(currencyCode);
+    selectCurrency(currency: Currency) {
+        this.selectedCurrency = currency;
+        this.closeModal();
+    }
+
+    closeModal() {
+        this.onCloseModal.emit(this.selectedCurrency!);
     }
 }

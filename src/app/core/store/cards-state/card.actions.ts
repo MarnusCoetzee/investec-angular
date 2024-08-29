@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { CurrencyConversion } from './card.reducer';
+import { ConvertCurrencyResult } from '../../interfaces/cards-state/cards-state.interface';
 
 export const getAllCountries = createAction('[Cards] Get All Countries');
 export const getAllCountriesSuccess = createAction(
@@ -18,7 +19,7 @@ export const getAllCurrenciesSuccess = createAction(
 );
 export const getAllCurrenciesFailure = createAction(
   '[Cards] Get All Currencies Failure',
-  props<{ error: any }>()
+  props<{ error: string }>()
 );
 
 export const getAllMerchants = createAction('[Cards] Get All merchants');
@@ -33,15 +34,15 @@ export const getAllMerchantsFailure = createAction(
 
 export const convertCurrency = createAction(
   '[Cards] Convert currency',
-  props<{ currencyConvertion: CurrencyConversion }>()
+  props<{ fromCurrency: string, toCurrency: string, fromAmount: number }>()
 );
 
 export const convertCurrencySuccess = createAction(
   '[Cards] Convert currency success',
-  props<{ conversionResult: number }>()
+  props<{convertCurrencyResult: ConvertCurrencyResult}>()
 );
 
-export const convertCurrencyFailor = createAction(
-  '[Cards] Convert currency Failor',
-  props<{ error: any }>()
+export const convertCurrencyFailure = createAction(
+  '[Cards] Convert currency Failure',
+  props<{ error: string }>()
 );
