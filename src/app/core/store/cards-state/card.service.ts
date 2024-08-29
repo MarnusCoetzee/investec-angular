@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
-import { CurrencyConversion } from './card.reducer';
-import { ConvertCurrencyResult } from '../../interfaces/cards-state/cards-state.interface';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +9,6 @@ export class CardService {
   private baseUrl = 'http://localhost:3000/za/v1/cards';
 
   constructor(private http: HttpClient) {}
-
   getCountries(): Observable<any[]> {
     const url = `${this.baseUrl}/countries`;
     return this.http.get<any[]>(url);
