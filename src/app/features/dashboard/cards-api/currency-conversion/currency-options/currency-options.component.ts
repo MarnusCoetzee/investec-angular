@@ -15,11 +15,6 @@ export class CurrencyOptionsComponent {
     selectedCurrency: Currency | null = null;
     @Output() onCloseModal = new EventEmitter<Currency>();
 
-
-    // handleSelectedCurrency(currencyCode: string) {
-        //     this.selectedCurrency.emit(currencyCode);
-        // }
-
     isSelected(currency: Currency) {
         return currency.code === this.selectedCurrency?.code;
     }
