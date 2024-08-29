@@ -11,7 +11,7 @@ export class CardFacade {
     (state) => state.card.countries.data?.result
   );
   cardCurrencies$ = this.store.select(
-    (state) => {console.log(state); return state.card.currencies}
+    (state) => state.card.currencies
   );
   cardMerchants$ = this.store.select(
     (state) => state.card.merchants.data?.result

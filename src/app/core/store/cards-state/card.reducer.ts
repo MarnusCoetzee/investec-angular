@@ -42,11 +42,11 @@ export const cardReducer = createReducer(
     loading: false,
   })),
   on(CardActions.getAllCurrencies, (state) => ({ ...state, loading: true })),
-  on(CardActions.getAllCurrenciesSuccess, (state, { currencies }) => {console.log(currencies); return {
+  on(CardActions.getAllCurrenciesSuccess, (state, { currencies }) => ({
     ...state,
     currencies: currencies.data?.result,
     loading: false,
-  }}),
+  })),
   on(CardActions.getAllCurrenciesFailure, (state, { error }) => ({
     ...state,
     error,
